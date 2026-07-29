@@ -397,14 +397,16 @@
           </div>
         </div>
 
-        <!-- TARJETA 3 -->
+                        <!-- TARJETA 3: ATUENDOS EXPRESIVOS (SKINPACK) -->
         <div class="glass-pill-warm rounded-3xl overflow-hidden flex flex-col justify-between group transition-all duration-300">
           <div>
-            <div class="relative overflow-hidden cursor-pointer h-56 sm:h-64 bg-[#fef3c7] dark:bg-slate-800 flex items-center justify-center p-4 group/img" onclick="openProductModal('cyber-skins')">
-              <img src="ofrecemos2.png" alt="Cyberpunk HD Skin Pack" class="max-h-full w-full object-cover transition-transform duration-300 group-hover/img:scale-105" onerror="this.onerror=null; this.src='https://via.placeholder.com/380x280?text=Cyber+Skins';">
+            <div class="relative overflow-hidden cursor-pointer h-56 sm:h-64 bg-[#fef3c7] dark:bg-slate-800 flex items-center justify-center p-0 group/img" onclick="openProductModal('cyber-skins')">
+              <img src="skinpack1.jpg" alt="Atuendos expresivos Skin Pack" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover/img:scale-105" onerror="this.onerror=null; this.src='https://via.placeholder.com/380x280?text=skinpack1.jpg';">
               <div class="absolute inset-0 bg-amber-950/60 dark:bg-black/60 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-2">
                 <span class="cartoon-btn px-4 py-2 text-xs rounded-xl flex items-center gap-1.5">
-                  <i data-lucide="eye" class="w-4 h-4"></i> <span class="lang-es">VISTA PREVIA</span><span class="lang-en">PREVIEW</span>
+                  <i data-lucide="eye" class="w-4 h-4"></i>
+                  <span class="lang-es">VISTA PREVIA</span>
+                  <span class="lang-en">PREVIEW</span>
                 </span>
               </div>
               <span class="absolute top-3 left-3 bg-cyan-400 text-black text-[10px] font-extrabold uppercase px-3 py-1 rounded-full border border-black shadow-[2px_2px_0px_0px_#000]">SKIN PACK</span>
@@ -412,19 +414,26 @@
             <div class="p-5 sm:p-6">
               <span class="text-[10px] font-black uppercase tracking-widest text-[#b45309] dark:text-[#ffa800] lang-es">PAQUETE DE SKINS</span>
               <span class="text-[10px] font-black uppercase tracking-widest text-[#b45309] dark:text-[#ffa800] lang-en">SKIN PACK</span>
-              <h3 class="text-lg sm:text-2xl font-heavitas text-[#261505] dark:text-white mt-1 mb-2">Cyber Neon HD Skins</h3>
-              <p class="text-stone-700 dark:text-stone-400 text-xs font-medium leading-relaxed line-clamp-3 mb-4 lang-es">Consigue el look neón definitivo con 12 skins temáticas futuristas en alta resolución (128x128) diseñadas para destacar en multijugador.</p>
-              <p class="text-stone-700 dark:text-stone-400 text-xs font-medium leading-relaxed line-clamp-3 mb-4 lang-en">Get the ultimate neon look with 12 futuristic themed high-resolution skins (128x128) designed to stand out in multiplayer.</p>
+              
+              <h3 class="text-lg sm:text-2xl font-heavitas text-[#261505] dark:text-white mt-1 mb-2">
+                <span class="lang-es">Atuendos expresivos</span>
+                <span class="lang-en">Expressive Outfits</span>
+              </h3>
+              
+              <p class="text-stone-700 dark:text-stone-400 text-xs font-medium leading-relaxed line-clamp-3 mb-4 lang-es">¡Exprésate como nunca antes en Minecraft! Con estos conjuntos únicos y con estilo, cada juego se convierte en tu pasarela. Dale personalidad a tu avatar y destaca en todos los mundos.</p>
+              <p class="text-stone-700 dark:text-stone-400 text-xs font-medium leading-relaxed line-clamp-3 mb-4 lang-en">Express yourself like never before in Minecraft! With these unique and stylish outfits, every game becomes your runway. Give personality to your avatar and stand out in all worlds.</p>
             </div>
           </div>
           <div class="p-5 sm:p-6 pt-0 space-y-2">
             <button onclick="openProductModal('cyber-skins')" class="cartoon-btn-secondary w-full py-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer">
               <i data-lucide="info" class="w-4 h-4"></i>
-              <span class="lang-es">MÁS DETALLES</span><span class="lang-en">MORE DETAILS</span>
+              <span class="lang-es">MÁS DETALLES</span>
+              <span class="lang-en">MORE DETAILS</span>
             </button>
-            <a href="https://www.minecraft.net/marketplace" target="_blank" class="cartoon-btn w-full py-3.5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+            <a href="https://www.minecraft.net/es-es/marketplace/pdp/kora-studios/expressive-outfits/25c9b934-53cb-4cc0-96ea-0955e7bbe22f" target="_blank" class="cartoon-btn w-full py-3.5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2">
               <i data-lucide="shopping-cart" class="w-4 h-4"></i>
-              <span class="lang-es">COMPRAR EN MARKETPLACE</span><span class="lang-en">BUY ON MARKETPLACE</span>
+              <span class="lang-es">COMPRAR EN MARKETPLACE</span>
+              <span class="lang-en">BUY ON MARKETPLACE</span>
             </a>
           </div>
         </div>
@@ -869,10 +878,12 @@
       });
     }
 
-    // ================= PRODUCTOS CON BILINGÜISMO =================
+        // ================= PRODUCTOS CON BILINGÜISMO =================
     const productsData = {
       'bee-kingdom': {
-        tag: { es: '⭐ DESTACADO / ADD-ON', en: '⭐ FEATURED / ADD-ON' }, title: 'Bee Kingdom Addon v2.0', img: 'product-render.png',
+        tag: { es: '⭐ DESTACADO / ADD-ON', en: '⭐ FEATURED / ADD-ON' }, 
+        title: { es: 'Bee Kingdom Addon v2.0', en: 'Bee Kingdom Addon v2.0' }, 
+        img: 'product-render.png',
         desc: { 
           es: 'El complemento definitivo que transforma por completo el comportamiento de las abejas y la miel en Minecraft Bedrock. Añade nuevas colmenas gigantes, abejas reina con IA avanzada, ítems de recolección y armas temáticas de miel.', 
           en: 'The ultimate add-on that completely transforms bee and honey behavior in Minecraft Bedrock. Adds new giant hives, queen bees with advanced AI, harvest items, and honey-themed weapons.' 
@@ -884,7 +895,9 @@
         buyUrl: 'https://www.minecraft.net/marketplace'
       },
       'dragons-realm': {
-        tag: { es: 'GENERAL / AVENTURA RPG', en: 'GENERAL / RPG ADVENTURE' }, title: 'Dragons Realm Adventure', img: 'ofrecemos1.png',
+        tag: { es: 'GENERAL / AVENTURA RPG', en: 'GENERAL / RPG ADVENTURE' }, 
+        title: { es: 'Dragons Realm Adventure', en: 'Dragons Realm Adventure' }, 
+        img: 'ofrecemos1.png',
         desc: { 
           es: 'Explora un vasto reino medieval habitado por temibles dragones. Completa misiones secundarias, rescata aldeanos, equipa armaduras legendarias y derrota al Dragón Antiguo en una batalla épica sin precedentes.', 
           en: 'Explore a vast medieval realm inhabited by fearsome dragons. Complete side quests, rescue villagers, equip legendary armors, and defeat the Ancient Dragon in an unprecedented epic battle.' 
@@ -896,16 +909,24 @@
         buyUrl: 'https://www.minecraft.net/marketplace'
       },
       'cyber-skins': {
-        tag: { es: 'SKIN PACK / FUTURISTA', en: 'SKIN PACK / FUTURISTIC' }, title: 'Cyber Neon HD Skins', img: 'ofrecemos2.png',
+        tag: { es: 'SKIN PACK / EXPRESIVO', en: 'SKIN PACK / EXPRESSIVE' }, 
+        title: { es: 'Atuendos expresivos', en: 'Expressive Outfits' }, 
+        img: 'skinpack1.jpg',
         desc: { 
-          es: 'Lleva tu estilo al siguiente nivel en tus servidores o mundos multijugador con este paquete de 12 skins cyberpunk de alta definición con detalles en neón brillante.', 
-          en: 'Take your style to the next level in your servers or multiplayer worlds with this pack of 12 high-definition cyberpunk skins featuring glowing neon details.' 
+          es: '¡Exprésate como nunca antes en Minecraft! Con estos conjuntos únicos y con estilo, cada juego se convierte en tu pasarela. Dale personalidad a tu avatar y destaca en todos los mundos.', 
+          en: 'Express yourself like never before in Minecraft! With these unique and stylish outfits, every game becomes your runway. Give personality to your avatar and stand out in all worlds.' 
         },
         features: {
-          es: ['12 Skins exclusivas en HD (128x128)', 'Diseños futuristas de ciborgs, hackers y pilotos', 'Colores en neón brillante de alto contraste', 'Soporte completo para avatares masculinos y femeninos'],
-          en: ['12 Exclusive HD Skins (128x128)', 'Futuristic cyborg, hacker, and pilot designs', 'High contrast glowing neon colors', 'Full support for male and female avatars']
+          es: [
+            'Incluye 10 skins originales y exclusivos',
+            'Diseños coloridos y expresivos para todos los estilos'
+          ],
+          en: [
+            'Includes 10 original and exclusive skins',
+            'Colorful and expressive designs for all styles'
+          ]
         },
-        buyUrl: 'https://www.minecraft.net/marketplace'
+        buyUrl: 'https://www.minecraft.net/es-es/marketplace/pdp/kora-studios/expressive-outfits/25c9b934-53cb-4cc0-96ea-0955e7bbe22f'
       }
     };
 
@@ -914,19 +935,22 @@
       if (!data) return;
       const lang = document.documentElement.getAttribute('lang') || 'es';
 
-      document.getElementById('modalProductTitle').innerText = data.title;
+      document.getElementById('modalProductTitle').innerText = typeof data.title === 'object' ? data.title[lang] : data.title;
       document.getElementById('modalProductTag').innerText = data.tag[lang];
       document.getElementById('modalProductImg').src = data.img;
       document.getElementById('modalProductDesc').innerText = data.desc[lang];
       document.getElementById('modalProductBuyBtn').href = data.buyUrl;
 
-      const fCont = document.getElementById('modalProductFeatures'); fCont.innerHTML = '';
+      const fCont = document.getElementById('modalProductFeatures'); 
+      fCont.innerHTML = '';
       data.features[lang].forEach(feat => {
-        const li = document.createElement('li'); li.className = 'flex items-center gap-2 text-stone-800 dark:text-stone-300';
+        const li = document.createElement('li'); 
+        li.className = 'flex items-center gap-2 text-stone-800 dark:text-stone-300';
         li.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4 text-[#d97706] dark:text-[#ffa800] shrink-0"></i> ${feat}`;
         fCont.appendChild(li);
       });
-      lucide.createIcons(); openModal('modalProductDetail');
+      lucide.createIcons(); 
+      openModal('modalProductDetail');
     }
 
     // ================= WORKER FORMULARIO =================
