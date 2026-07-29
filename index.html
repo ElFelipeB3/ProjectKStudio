@@ -1,0 +1,1267 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K PROJECT STUDIOS | Minecraft Marketplace Studio</title>
+  
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Iconos Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Google Fonts: Silkscreen & Press Start 2P + Outfit & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,900;1,900&family=Outfit:wght@400;500;600;700;800;900&family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================= 1. BRAND GUIDELINES & FONTS ================= */
+    @font-face {
+      font-family: 'Heavitas';
+      src: url('Heavitas.ttf') format('truetype'),
+           url('Heavitas.otf') format('opentype');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --brand-dark: #0c1017;
+      --brand-card: #131926;      
+      --brand-orange: #ffa800;    
+      --brand-yellow: #ffd928;    
+      --brand-cyan: #00f0ff;      
+      --brand-white: #ffffff;     
+      --brand-gray: #e0e0e0;      
+      --brand-black: #000000;     
+      --mouse-x: 50%;
+      --mouse-y: 50%;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--brand-dark);
+      color: var(--brand-gray);
+      overflow-x: hidden;
+      
+      /* PROTECCIÓN: Desactivar selección de texto */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* PROTECCIÓN: Desactivar arrastre de imágenes */
+    img {
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+    }
+
+    /* TÍTULOS CON FUENTE MINECRAFT PIXEL (SILKSCREEN) */
+    .font-heavitas {
+      font-family: 'Silkscreen', 'Press Start 2P', monospace, cursive;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    /* SUBTÍTULOS / BOTONES / DESCRIPCIONES CON HEAVITAS */
+    .font-subheavitas {
+      font-family: 'Heavitas', 'Montserrat', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    /* ================= 2. ANIMACIONES OPTIMIZADAS ================= */
+    @keyframes floatHeroPortal {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
+    }
+
+    @keyframes floatFreestanding {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes kenburnsBg {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    .animate-portal-hero {
+      animation: floatHeroPortal 5.5s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .animate-freestanding {
+      animation: floatFreestanding 6s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .animate-kenburns {
+      animation: kenburnsBg 22s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    /* PERSPECTIVA 3D INTERACTIVA DEL GIF HERO */
+    .perspective-container {
+      perspective: 1200px;
+    }
+
+    .tilt-card-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out;
+      will-change: transform;
+    }
+
+    .tilt-card-3d.reset-tilt {
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .render-shadow-glow {
+      filter: drop-shadow(0 12px 25px rgba(180, 83, 9, 0.22));
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform;
+    }
+
+    .render-shadow-glow:hover {
+      transform: scale(1.04) translateY(-6px);
+    }
+
+    /* ILUMINACIÓN DINÁMICA SUTIL */
+    .hero-dynamic-light {
+      background: radial-gradient(
+        650px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(255, 217, 40, 0.22) 0%, 
+        rgba(255, 168, 0, 0.08) 40%,
+        rgba(0, 0, 0, 0.2) 85%
+      );
+      pointer-events: none;
+    }
+
+    /* ================= 3. HEADER COMPACTO ================= */
+    .mc-nav-compact {
+      background-color: rgba(255, 253, 245, 0.98);
+      border-top: 3.5px solid var(--brand-yellow);
+      border-bottom: 3.5px solid var(--brand-orange);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .mc-corner-pixel-tr {
+      position: absolute;
+      top: -3.5px;
+      right: -3.5px;
+      width: 9px;
+      height: 9px;
+      background-color: var(--brand-yellow);
+      border-bottom: 2px solid var(--brand-orange);
+      border-left: 2px solid var(--brand-orange);
+    }
+
+    .mc-corner-pixel-br {
+      position: absolute;
+      bottom: -3.5px;
+      right: -3.5px;
+      width: 9px;
+      height: 9px;
+      background-color: var(--brand-orange);
+    }
+
+    .mc-logo-badge {
+      background: linear-gradient(180deg, var(--brand-yellow) 0%, var(--brand-orange) 100%);
+      border-top: 2px solid #fff2a3;
+      border-left: 2px solid #fff2a3;
+      border-bottom: 4px solid #805400;
+      border-right: 3px solid #805400;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      transition: transform 0.2s ease;
+    }
+
+    .mc-logo-badge:hover {
+      transform: scale(1.06) rotate(-2deg);
+    }
+
+    .mc-item-tab {
+      position: relative;
+      color: #1c1917;
+      transition: all 0.2s ease;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+
+    .mc-item-tab:hover, .mc-item-tab.active {
+      background-color: #ffa800;
+      color: #000000;
+      font-weight: 900;
+    }
+
+    .mc-item-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 12%;
+      right: 12%;
+      height: 3.5px;
+      background-color: #78350f;
+      border-radius: 2px;
+    }
+
+    /* Ocultar barra de scroll en navegación móvil */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* ================= 4. ESTILOS CÁLIDOS Y CLAROS ================= */
+    .warm-light-section {
+      background: linear-gradient(180deg, #fffdf5 0%, #fef3c7 40%, #fffbeb 80%, #fef8ee 100%);
+      color: #292524;
+    }
+
+    .glass-pill-warm {
+      background: rgba(255, 255, 255, 0.94);
+      border: 2px solid #fcd34d;
+      box-shadow: 0 10px 25px rgba(180, 83, 9, 0.06);
+      color: #292524;
+    }
+
+    .glass-pill-warm:hover {
+      border-color: #f59e0b;
+      background: #ffffff;
+      box-shadow: 0 14px 30px rgba(180, 83, 9, 0.12);
+    }
+
+    .cartoon-btn {
+      font-family: 'Heavitas', sans-serif;
+      background: linear-gradient(180deg, var(--brand-yellow) 0%, var(--brand-orange) 100%);
+      color: var(--brand-black);
+      border: 2.5px solid var(--brand-black);
+      box-shadow: 3px 3px 0px 0px #805400;
+      font-weight: 900;
+      transition: all 0.15s ease;
+    }
+
+    .cartoon-btn:hover {
+      background: var(--brand-yellow);
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0px 0px #805400;
+    }
+
+    .cartoon-btn-secondary {
+      font-family: 'Heavitas', sans-serif;
+      background: #ffffff;
+      color: #261505;
+      border: 2.5px solid #78350f;
+      box-shadow: 3px 3px 0px 0px #d97706;
+      font-weight: 800;
+      transition: all 0.15s ease;
+    }
+
+    .cartoon-btn-secondary:hover {
+      border-color: #000000;
+      background: #fef3c7;
+      color: #000000;
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0px 0px #b45309;
+    }
+
+    .discord-card-dynamic {
+      background: linear-gradient(135deg, #5865F2 0%, #2b32a3 100%);
+      border: 2.5px solid #312e81;
+      box-shadow: 0 12px 28px rgba(88, 101, 242, 0.22);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="relative selection:bg-[#ffd928] selection:text-black">
+
+  <!-- CANVAS PARTICULAS -->
+  <canvas id="bgParticlesCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
+
+  <!-- ================= 1. HEADER COMPACTO RESPONSIVE ================= -->
+  <header class="fixed top-2 sm:top-4 left-1/2 -translate-x-1/2 z-50 w-[96%] max-w-4xl">
+    <div class="mc-nav-compact rounded-xl px-2 sm:px-3 py-1 flex items-center justify-between">
+      
+      <div class="mc-corner-pixel-tr"></div>
+      <div class="mc-corner-pixel-br"></div>
+
+      <div class="flex items-center gap-2 w-full justify-between">
+        <!-- LOGO -->
+        <a href="#heroSection" class="mc-logo-badge rounded-lg p-1.5 sm:p-2 flex items-center justify-center my-[-4px] shrink-0">
+          <img src="logo.png" alt="Project K Logo" class="h-7 sm:h-9 w-auto object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/60x60?text=LOGO';">
+        </a>
+
+        <!-- NAVEGACIÓN DESKTOP -->
+        <nav class="hidden md:flex items-center justify-evenly w-full h-10 ml-2">
+          <a href="#heroSection" class="mc-item-tab active flex items-center gap-1.5 px-2.5 py-1.5 font-extrabold text-[11px] uppercase tracking-wider">
+            <span>🏰 INICIO</span>
+          </a>
+          <div class="h-4 w-[1px] bg-stone-300"></div>
+          <a href="#about" class="mc-item-tab flex items-center gap-1.5 px-2.5 py-1.5 font-extrabold text-[11px] uppercase tracking-wider">
+            <span>🐝 QUIÉNES SOMOS</span>
+          </a>
+          <div class="h-4 w-[1px] bg-stone-300"></div>
+          <a href="#product" class="mc-item-tab flex items-center gap-1.5 px-2.5 py-1.5 font-extrabold text-[11px] uppercase tracking-wider">
+            <span>📦 NUEVO PRODUCTO</span>
+          </a>
+          <div class="h-4 w-[1px] bg-stone-300"></div>
+          <a href="#services" class="mc-item-tab flex items-center gap-1.5 px-2.5 py-1.5 font-extrabold text-[11px] uppercase tracking-wider">
+            <span>🍯 SERVICIOS</span>
+          </a>
+          <div class="h-4 w-[1px] bg-stone-300"></div>
+          <a href="#contact" class="mc-item-tab flex items-center gap-1.5 px-2.5 py-1.5 font-extrabold text-[11px] uppercase tracking-wider">
+            <span>🌼 CONTÁCTANOS</span>
+          </a>
+        </nav>
+
+        <!-- NAVEGACIÓN MÓVIL DESLIZABLE (SLIDER DE PÍLDORAS TÁCTIL) -->
+        <div class="flex md:hidden overflow-x-auto no-scrollbar gap-1.5 py-1 px-1 w-full ml-1">
+          <a href="#heroSection" class="mc-item-tab active px-2.5 py-1 text-[10px] font-black uppercase shrink-0 rounded-md">
+            Inicio
+          </a>
+          <a href="#about" class="mc-item-tab px-2.5 py-1 text-[10px] font-black uppercase shrink-0 rounded-md">
+            Nosotros
+          </a>
+          <a href="#product" class="mc-item-tab px-2.5 py-1 text-[10px] font-black uppercase shrink-0 rounded-md">
+            Producto
+          </a>
+          <a href="#services" class="mc-item-tab px-2.5 py-1 text-[10px] font-black uppercase shrink-0 rounded-md">
+            Servicios
+          </a>
+          <a href="#contact" class="mc-item-tab px-2.5 py-1 text-[10px] font-black uppercase shrink-0 rounded-md">
+            Contacto
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION (FONDO CLARO Y VISIBLE) ================= -->
+  <section id="heroSection" class="relative min-h-screen pt-28 sm:pt-36 pb-16 px-4 sm:px-6 flex flex-col justify-center items-center overflow-hidden z-10">
+    
+    <!-- BANNER CON MÁXIMA NITIDEZ Y LUZ -->
+    <div class="absolute inset-0 w-full h-full -z-20 overflow-hidden pointer-events-none">
+      <img src="banner.jpg" 
+           alt="Banner Project K" 
+           class="w-full h-full object-cover object-center animate-kenburns opacity-100" 
+           onerror="this.onerror=null; this.src='https://via.placeholder.com/1920x1080?text=banner.jpg';">
+      
+      <!-- Luz dinámica muy suave -->
+      <div class="absolute inset-0 hero-dynamic-light"></div>
+
+      <!-- Gradiente sutil -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#fffdf5]"></div>
+    </div>
+
+    <div class="max-w-7xl w-full grid lg:grid-cols-12 gap-6 sm:gap-8 items-center z-10 text-left">
+      
+      <!-- LADO IZQUIERDO: TEXTOS & BRANDING -->
+      <div class="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
+        
+        <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1 rounded-full bg-[#0c1017]/80 border-2 border-[#ffa800] text-[#ffd928] text-[10px] sm:text-xs font-extrabold uppercase tracking-widest mb-3 shadow-xl backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>MINECRAFT MARKETPLACE STUDIO</span>
+        </div>
+
+        <h1 class="font-heavitas text-xl sm:text-3xl lg:text-4xl text-white tracking-widest drop-shadow-[0_3px_8px_rgba(0,0,0,0.9)] mb-1">
+          ¡BIENVENIDO A!
+        </h1>
+
+        <!-- ESTRUCTURA HORIZONTAL: PROJECT [LOGO] STUDIOS -->
+        <div class="w-full my-1 sm:my-2 flex justify-center lg:justify-start items-center">
+          <div class="flex items-center gap-1.5 sm:gap-3 flex-nowrap whitespace-nowrap">
+            <span class="font-heavitas text-2xl sm:text-4xl lg:text-5xl text-[#ffa800] drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]">
+              PROJECT
+            </span>
+            
+            <div class="bg-[#ffd928] p-1 sm:p-2 rounded-xl sm:rounded-2xl border-2 border-black shadow-[2px_2px_0px_0px_#805400] shrink-0 transform hover:rotate-6 hover:scale-105 transition-transform cursor-pointer">
+              <img src="logo.png" 
+                   alt="K" 
+                   class="h-7 sm:h-12 w-auto object-contain" 
+                   onerror="this.onerror=null; this.src='https://via.placeholder.com/80x80?text=K';">
+            </div>
+
+            <span class="font-heavitas text-2xl sm:text-4xl lg:text-5xl text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]">
+              STUDIOS
+            </span>
+          </div>
+        </div>
+
+        <!-- DESCRIPCIÓN REQUERIDA DE FORMA NATURAL -->
+        <div class="mt-3 text-white text-sm sm:text-base leading-relaxed font-semibold drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] max-w-xl bg-black/40 p-3.5 sm:p-4 rounded-2xl border border-white/20 backdrop-blur-sm">
+          <p>
+            Nos apasiona diseñar <span class="text-[#ffd928] font-bold underline decoration-[#ffa800]/90 decoration-2">experiencias innovadoras y llenas de color</span> pensadas para entretener a niños y jugadores de todas las edades. En <strong class="text-white font-black">K Project Studios</strong> nos dedicamos a crear mundos, texturas y aventuras dentro del <span class="text-[#ffa800] font-bold">Marketplace oficial</span> que despierten la imaginación, saquen sonrisas y, sobre todo, se conviertan en los contenidos favoritos de la comunidad.
+          </p>
+        </div>
+
+        <!-- ETIQUETAS DE VALORES -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-4 mt-4 text-[10px] sm:text-xs font-black uppercase tracking-wider text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] bg-black/40 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20">
+          <span class="text-emerald-400 flex items-center gap-1"><i data-lucide="sparkles" class="w-3 h-3"></i> Imaginación</span>
+          <span>•</span>
+          <span class="text-[#ffa800] flex items-center gap-1"><i data-lucide="gamepad-2" class="w-3 h-3"></i> Diversión</span>
+          <span>•</span>
+          <span class="text-[#ffd928] flex items-center gap-1"><i data-lucide="heart" class="w-3 h-3"></i> Para Todos</span>
+        </div>
+
+      </div>
+
+      <!-- LADO DERECHO: GIF "INICIO.GIF" CON EFECTO INTERACTIVO 3D TILT AL PASAR EL MOUSE -->
+      <div class="lg:col-span-6 relative flex flex-col items-center justify-center mt-2 lg:mt-0 perspective-container">
+        
+        <!-- RESPLANDOR TRASERO -->
+        <div class="absolute w-64 h-64 sm:w-[450px] sm:h-[450px] bg-gradient-to-tr from-[#00f0ff]/20 via-[#ffd928]/25 to-[#ffa800]/25 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <!-- CONTENEDOR REACTIVO 3D AL MOUSE -->
+        <div id="hero3dContainer" class="relative z-10 cursor-pointer w-full flex justify-center lg:-mt-6">
+          <div id="hero3dCard" class="tilt-card-3d animate-portal-hero">
+            <img src="inicio.gif" 
+                 alt="Portal K Project Studios GIF" 
+                 class="max-h-[380px] sm:max-h-[580px] lg:max-h-[700px] w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+                 onerror="this.onerror=null; this.src='inicio.png';">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTENEDOR CÁLIDO Y CLARO DESDE "QUIÉNES SOMOS" HASTA CONTACTO -->
+  <div class="warm-light-section relative z-10 border-t-4 border-[#ffa800]">
+
+    <!-- ================= 2. SECCIÓN: "QUIÉNES SOMOS" ================= -->
+    <section id="about" class="py-14 sm:py-20 px-4 sm:px-6 max-w-7xl mx-auto relative z-10 overflow-hidden">
+      
+      <!-- CABECERA INSTITUCIONAL CLEAN -->
+      <div class="text-center mb-12 sm:mb-16 relative z-10 reveal max-w-4xl mx-auto">
+        <h2 class="text-2xl sm:text-5xl font-heavitas text-[#261505] tracking-tight mb-4 sm:mb-6">
+          Quiénes <span class="text-[#d97706]">somos</span>
+        </h2>
+
+        <!-- TEXTO INSTITUCIONAL FLUIDO Y LIMPIO EN TONOS CÁLIDOS LEIBLES -->
+        <div class="space-y-3 sm:space-y-4 text-stone-800 text-sm sm:text-lg leading-relaxed font-medium">
+          <p>
+            <strong class="text-[#261505] font-black">K Project Studios</strong> es un estudio creativo internacional dedicado al desarrollo de contenidos de alta calidad para el <span class="text-[#b45309] font-bold">Minecraft Marketplace</span>. Nuestro equipo está formado por constructores, diseñadores y creadores apasionados, centrados en ofrecer mapas inmersivos, minijuegos atractivos y experiencias únicas.
+          </p>
+          <p class="text-stone-700 text-xs sm:text-base">
+            Combinamos creatividad, experiencia técnica e ideas impulsadas por la comunidad para producir contenidos que destaquen. Nuestro objetivo es crear no solo proyectos entretenidos, sino también un entorno colaborativo en el que los creadores puedan crecer, aprender e innovar juntos.
+          </p>
+        </div>
+      </div>
+
+      <!-- BLOQUE 1: CREATIVIDAD SIN LÍMITES + PERSONAJE 1 (PROPORCIONAL Y DESTACADO EN MÓVIL Y PC) -->
+      <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center mb-16 sm:mb-28 reveal relative pt-4 sm:pt-10">
+        
+        <!-- PERSONAJE 1 (AJUSTADO PARA MÓVIL Y PC SIN DESBORDAR) -->
+        <div class="lg:col-span-6 flex justify-center relative z-20 overflow-visible">
+          <div class="absolute w-64 h-64 sm:w-[450px] sm:h-[450px] bg-[#f59e0b]/20 rounded-full blur-3xl pointer-events-none"></div>
+          <img src="personaje1.png" 
+               alt="Creatividad Sin Límites - Personaje 1" 
+               class="max-h-[420px] sm:max-h-[750px] lg:max-h-[950px] w-auto object-contain render-shadow-glow animate-freestanding relative z-10 origin-bottom"
+               onerror="this.onerror=null; this.src='https://via.placeholder.com/600x800?text=personaje1.png';">
+        </div>
+
+        <!-- TEXTO BLOQUE 1 -->
+        <div class="lg:col-span-6 space-y-3 sm:space-y-5 text-left mt-4 lg:mt-0 relative z-10">
+          <h3 class="text-xl sm:text-4xl font-heavitas text-[#261505] leading-snug">
+            Creatividad <span class="text-[#d97706]">Sin Límites</span>
+          </h3>
+          <p class="text-stone-800 text-sm sm:text-lg leading-relaxed font-medium">
+            Detrás de cada bloque hay una gran idea esperando a ser jugada. En nuestro estudio nos enfocamos en dar vida a complementos y mapas interactivos en <span class="text-[#b45309] font-bold">Minecraft Bedrock</span> pensados para unir a generaciones a través del entretenimiento. Ponemos toda nuestra dedicación en innovar y pulir cada detalle para entregar contenido oficial en el Marketplace que no solo sea visualmente increíble, sino que se convierta en la nueva experiencia favorita de grandes y pequeños.
+          </p>
+        </div>
+      </div>
+
+      <!-- BLOQUE 2: DIVERSIDAD QUE IMPACTA + PERSONAJE 2 -->
+      <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center mb-16 sm:mb-20 reveal relative">
+        <div class="lg:col-span-7 space-y-3 sm:space-y-5 text-left order-2 lg:order-1">
+          <h3 class="text-xl sm:text-4xl font-heavitas text-[#261505] leading-snug">
+            Diversidad que <span class="text-[#d97706]">Impacta</span>
+          </h3>
+          <p class="text-stone-800 text-sm sm:text-lg leading-relaxed font-medium">
+            Una de nuestras mayores fortalezas en <strong class="text-[#261505]">K Project Studios</strong> es la capacidad de desarrollar una gran variedad de experiencias divertidas para el Marketplace de Minecraft Bedrock. Desde coloridos mapas de aventuras para niños hasta innovadores minijuegos para todas las edades, hemos demostrado que no hay límites para nuestra imaginación.
+          </p>
+          <div class="h-1.5 w-24 sm:w-32 bg-gradient-to-r from-[#f59e0b] to-transparent rounded-full my-2"></div>
+          <p class="text-amber-950 text-xs sm:text-sm font-semibold italic">
+            "Mapas de aventuras, minijuegos y paquetes de texturas diseñados para enamorar a todo tipo de jugador."
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 flex justify-center relative order-1 lg:order-2">
+          <div class="absolute w-60 h-60 sm:w-80 sm:h-80 bg-[#f59e0b]/20 rounded-full blur-3xl pointer-events-none"></div>
+          <img src="personaje2.png" 
+               alt="Diversidad que Impacta - Personaje 2" 
+               class="max-h-[380px] sm:max-h-[580px] w-auto object-contain render-shadow-glow animate-freestanding relative z-10"
+               onerror="this.onerror=null; this.src='https://via.placeholder.com/500x650?text=personaje2.png';">
+        </div>
+      </div>
+
+      <!-- BLOQUE 3: PASIÓN & CALIDAD + PERSONAJE 3 -->
+      <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center reveal relative">
+        <div class="lg:col-span-5 flex justify-center relative">
+          <div class="absolute w-60 h-60 sm:w-80 sm:h-80 bg-[#f59e0b]/20 rounded-full blur-3xl pointer-events-none"></div>
+          <img src="personaje3.png" 
+               alt="Calidad Oficial Marketplace - Personaje 3" 
+               class="max-h-[380px] sm:max-h-[580px] w-auto object-contain render-shadow-glow animate-freestanding relative z-10"
+               onerror="this.onerror=null; this.src='https://via.placeholder.com/500x650?text=personaje3.png';">
+        </div>
+
+        <div class="lg:col-span-7 space-y-3 sm:space-y-5 text-left">
+          <h3 class="text-xl sm:text-4xl font-heavitas text-[#261505] leading-snug">
+            Pasión en Cada <span class="text-emerald-700">Píxel</span>
+          </h3>
+          <p class="text-stone-800 text-sm sm:text-lg leading-relaxed font-medium">
+            Mantenemos un compromiso inquebrantable con el rendimiento, la optimización y la accesibilidad. Nos aseguramos de que cada proyecto entregado cuente con mecánicas pulidas, sin fallos técnicos y con el sello de calidad exigido por el <span class="text-[#b45309] font-bold">Minecraft Marketplace</span>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. NUEVO PRODUCTO / CATÁLOGO MARKETPLACE ================= -->
+    <section id="product" class="pt-4 sm:pt-6 pb-16 sm:pb-20 px-4 sm:px-6 max-w-7xl mx-auto relative z-10">
+      <div class="text-center mb-10 sm:mb-12 reveal">
+        <h2 class="text-2xl sm:text-5xl font-heavitas text-[#261505] tracking-tight">
+          Nuestros <span class="text-[#d97706]">Lanzamientos</span>
+        </h2>
+        <p class="text-stone-700 text-xs sm:text-base max-w-xl mx-auto mt-2 font-semibold">
+          Explora nuestras creaciones oficializadas para el Minecraft Marketplace. Haz clic en la vista previa para ver todos los detalles.
+        </p>
+      </div>
+
+      <!-- GRID DE PRODUCTOS -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 reveal">
+
+        <!-- TARJETA PRODUCTO 1 (DESTACADO) -->
+        <div class="glass-pill-warm rounded-3xl overflow-hidden flex flex-col justify-between group transition-all duration-300">
+          <div>
+            <!-- PORTADA CON OVERLAY PREVIEW -->
+            <div class="relative overflow-hidden cursor-pointer h-56 sm:h-64 bg-[#fef3c7] flex items-center justify-center p-4 group/img" onclick="openProductModal('bee-kingdom')">
+              <img src="product-render.png" 
+                   alt="Bee Kingdom Addon v2.0" 
+                   class="max-h-full w-auto object-contain transition-transform duration-300 group-hover/img:scale-105"
+                   onerror="this.onerror=null; this.src='https://via.placeholder.com/380x280?text=product-render.png';">
+              
+              <div class="absolute inset-0 bg-amber-950/60 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-2">
+                <span class="cartoon-btn px-4 py-2 text-xs rounded-xl flex items-center gap-1.5">
+                  <i data-lucide="eye" class="w-4 h-4"></i> VISTA PREVIA
+                </span>
+              </div>
+
+              <span class="absolute top-3 left-3 bg-[#ffd928] text-black text-[10px] font-extrabold uppercase px-3 py-1 rounded-full border border-black shadow-[2px_2px_0px_0px_#000]">
+                ⭐ DESTACADO
+              </span>
+            </div>
+
+            <!-- DATOS DEL PRODUCTO -->
+            <div class="p-5 sm:p-6">
+              <span class="text-[10px] font-black uppercase tracking-widest text-[#b45309]">ADD-ON DE RECURSOS</span>
+              <h3 class="text-lg sm:text-2xl font-heavitas text-[#261505] mt-1 mb-2">Bee Kingdom Addon v2.0</h3>
+              <p class="text-stone-700 text-xs font-medium leading-relaxed line-clamp-3 mb-4">
+                Paquete de recursos de última generación. Incluye modelos 3D Blockbench, animaciones customizadas de abejas, interfaz UI Miel y soporte total Marketplace.
+              </p>
+            </div>
+          </div>
+
+          <!-- ACCIONES Y BOTONES -->
+          <div class="p-5 sm:p-6 pt-0 space-y-2">
+            <button onclick="openProductModal('bee-kingdom')" class="cartoon-btn-secondary w-full py-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer">
+              <i data-lucide="info" class="w-4 h-4"></i>
+              <span>MÁS DETALLES</span>
+            </button>
+            
+            <a href="https://www.minecraft.net/marketplace" target="_blank" class="cartoon-btn w-full py-3.5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+              <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+              <span>COMPRAR EN MARKETPLACE</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- TARJETA PRODUCTO 2 -->
+        <div class="glass-pill-warm rounded-3xl overflow-hidden flex flex-col justify-between group transition-all duration-300">
+          <div>
+            <!-- PORTADA CON OVERLAY PREVIEW -->
+            <div class="relative overflow-hidden cursor-pointer h-56 sm:h-64 bg-[#fef3c7] flex items-center justify-center p-4 group/img" onclick="openProductModal('dragons-realm')">
+              <img src="ofrecemos1.png" 
+                   alt="Dragons Realm World" 
+                   class="max-h-full w-full object-cover transition-transform duration-300 group-hover/img:scale-105"
+                   onerror="this.onerror=null; this.src='https://via.placeholder.com/380x280?text=Dragons+Realm';">
+              
+              <div class="absolute inset-0 bg-amber-950/60 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-2">
+                <span class="cartoon-btn px-4 py-2 text-xs rounded-xl flex items-center gap-1.5">
+                  <i data-lucide="eye" class="w-4 h-4"></i> VISTA PREVIA
+                </span>
+              </div>
+
+              <span class="absolute top-3 left-3 bg-emerald-400 text-black text-[10px] font-extrabold uppercase px-3 py-1 rounded-full border border-black shadow-[2px_2px_0px_0px_#000]">
+                WORLD MAP
+              </span>
+            </div>
+
+            <!-- DATOS DEL PRODUCTO -->
+            <div class="p-5 sm:p-6">
+              <span class="text-[10px] font-black uppercase tracking-widest text-[#b45309]">MUNDO DE AVENTURA</span>
+              <h3 class="text-lg sm:text-2xl font-heavitas text-[#261505] mt-1 mb-2">Dragons Realm Adventure</h3>
+              <p class="text-stone-700 text-xs font-medium leading-relaxed line-clamp-3 mb-4">
+                Una mítica aventura RPG ambientada en una ciudadela dragón. Incluye misiones custom, jefes finales gigantescos y dungeons para explorar.
+              </p>
+            </div>
+          </div>
+
+          <!-- ACCIONES Y BOTONES -->
+          <div class="p-5 sm:p-6 pt-0 space-y-2">
+            <button onclick="openProductModal('dragons-realm')" class="cartoon-btn-secondary w-full py-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer">
+              <i data-lucide="info" class="w-4 h-4"></i>
+              <span>MÁS DETALLES</span>
+            </button>
+            
+            <a href="https://www.minecraft.net/marketplace" target="_blank" class="cartoon-btn w-full py-3.5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+              <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+              <span>COMPRAR EN MARKETPLACE</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- TARJETA PRODUCTO 3 -->
+        <div class="glass-pill-warm rounded-3xl overflow-hidden flex flex-col justify-between group transition-all duration-300">
+          <div>
+            <!-- PORTADA CON OVERLAY PREVIEW -->
+            <div class="relative overflow-hidden cursor-pointer h-56 sm:h-64 bg-[#fef3c7] flex items-center justify-center p-4 group/img" onclick="openProductModal('cyber-skins')">
+              <img src="ofrecemos2.png" 
+                   alt="Cyberpunk HD Skin Pack" 
+                   class="max-h-full w-full object-cover transition-transform duration-300 group-hover/img:scale-105"
+                   onerror="this.onerror=null; this.src='https://via.placeholder.com/380x280?text=Cyber+Skins';">
+              
+              <div class="absolute inset-0 bg-amber-950/60 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-2">
+                <span class="cartoon-btn px-4 py-2 text-xs rounded-xl flex items-center gap-1.5">
+                  <i data-lucide="eye" class="w-4 h-4"></i> VISTA PREVIA
+                </span>
+              </div>
+
+              <span class="absolute top-3 left-3 bg-cyan-400 text-black text-[10px] font-extrabold uppercase px-3 py-1 rounded-full border border-black shadow-[2px_2px_0px_0px_#000]">
+                SKIN PACK
+              </span>
+            </div>
+
+            <!-- DATOS DEL PRODUCTO -->
+            <div class="p-5 sm:p-6">
+              <span class="text-[10px] font-black uppercase tracking-widest text-[#b45309]">PAQUETE DE SKINS</span>
+              <h3 class="text-lg sm:text-2xl font-heavitas text-[#261505] mt-1 mb-2">Cyber Neon HD Skins</h3>
+              <p class="text-stone-700 text-xs font-medium leading-relaxed line-clamp-3 mb-4">
+                Consigue el look neón definitivo con 12 skins temáticas futuristas en alta resolución (128x128) diseñadas para destacar en multijugador.
+              </p>
+            </div>
+          </div>
+
+          <!-- ACCIONES Y BOTONES -->
+          <div class="p-5 sm:p-6 pt-0 space-y-2">
+            <button onclick="openProductModal('cyber-skins')" class="cartoon-btn-secondary w-full py-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer">
+              <i data-lucide="info" class="w-4 h-4"></i>
+              <span>MÁS DETALLES</span>
+            </button>
+            
+            <a href="https://www.minecraft.net/marketplace" target="_blank" class="cartoon-btn w-full py-3.5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+              <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+              <span>COMPRAR EN MARKETPLACE</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 4. SECCIÓN: "LO QUE OFRECEMOS" ================= -->
+    <section id="services" class="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto relative z-10">
+      <div class="text-center mb-12 sm:mb-16 reveal">
+        <h2 class="text-2xl sm:text-5xl font-heavitas text-[#261505] tracking-tight">
+          Lo que <span class="text-[#d97706]">ofrecemos</span>
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 mb-16 sm:mb-20 reveal">
+        <div class="relative flex flex-col items-center lg:items-start group">
+          <div class="w-full h-60 sm:h-80 rounded-3xl overflow-hidden relative shadow-[0_12px_28px_rgba(180,83,9,0.15)] border-2 border-[#f59e0b]">
+            <img src="ofrecemos1.png" 
+                 alt="Mundos Inmersivos Minecraft" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=ofrecemos1.png';">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#261505]/70 via-transparent to-transparent"></div>
+          </div>
+          <div class="mt-4 sm:mt-6 space-y-1 sm:space-y-2 text-left">
+            <span class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-[#b45309] block">01 / EXPERIENCIAS DE JUEGO</span>
+            <h3 class="text-lg sm:text-2xl font-heavitas text-[#261505]">Desarrollo Inmersivo de Mapas</h3>
+            <p class="text-stone-800 text-xs sm:text-sm font-medium leading-relaxed max-w-lg">
+              Diseñamos mundos fantásticos con arquitectura detallada, lore envolvente y sistemas de juego optimizados para la comunidad Bedrock.
+            </p>
+          </div>
+        </div>
+
+        <div class="relative flex flex-col items-center lg:items-start group mt-4 lg:mt-0">
+          <div class="w-full h-60 sm:h-80 rounded-3xl overflow-hidden relative shadow-[0_12px_28px_rgba(180,83,9,0.15)] border-2 border-[#f59e0b]">
+            <img src="ofrecemos2.png" 
+                 alt="Calidad y Flujo de Trabajo" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=ofrecemos2.png';">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#261505]/70 via-transparent to-transparent"></div>
+          </div>
+          <div class="mt-4 sm:mt-6 space-y-1 sm:space-y-2 text-left">
+            <span class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-[#b45309] block">02 / CALIDAD AAA</span>
+            <h3 class="text-lg sm:text-2xl font-heavitas text-[#261505]">Flujo de Trabajo Estructurado</h3>
+            <p class="text-stone-800 text-xs sm:text-sm font-medium leading-relaxed max-w-lg">
+              Metodologías ágiles de trabajo, pruebas continuas de rendimiento y aseguramiento de calidad antes de cada lanzamiento oficial.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TÍTULOS EN FUENTE MINECRAFT PIXEL -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 reveal pt-6 sm:pt-8 border-t border-amber-300">
+        <div class="flex gap-3 sm:gap-4 items-start group">
+          <div class="p-2.5 sm:p-3 rounded-2xl bg-amber-500/15 border-2 border-[#d97706] text-[#b45309] font-black shrink-0">
+            <i data-lucide="newspaper" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+          </div>
+          <div>
+            <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] mb-1 tracking-wider">Novedades Oficiales</h4>
+            <p class="text-stone-700 text-xs font-medium leading-relaxed">Información actualizada sobre nuestros lanzamientos y fechas de estreno.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-3 sm:gap-4 items-start group">
+          <div class="p-2.5 sm:p-3 rounded-2xl bg-amber-500/15 border-2 border-[#d97706] text-[#b45309] font-black shrink-0">
+            <i data-lucide="users" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+          </div>
+          <div>
+            <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] mb-1 tracking-wider">Red de Creadores</h4>
+            <p class="text-stone-700 text-xs font-medium leading-relaxed">Espacio de trabajo colaborativo para constructores y desarrolladores.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-3 sm:gap-4 items-start group">
+          <div class="p-2.5 sm:p-3 rounded-2xl bg-emerald-500/15 border-2 border-emerald-600 text-emerald-800 font-black shrink-0">
+            <i data-lucide="headset" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+          </div>
+          <div>
+            <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] mb-1 tracking-wider">Atención Dedicada</h4>
+            <p class="text-stone-700 text-xs font-medium leading-relaxed">Canales directos para asistencia técnica y gestión de sugerencias.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-3 sm:gap-4 items-start group">
+          <div class="p-2.5 sm:p-3 rounded-2xl bg-cyan-500/15 border-2 border-cyan-600 text-cyan-800 font-black shrink-0">
+            <i data-lucide="briefcase" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+          </div>
+          <div>
+            <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] mb-1 tracking-wider">Oportunidades</h4>
+            <p class="text-stone-700 text-xs font-medium leading-relaxed">Convocatorias abiertas para sumarse a los equipos de producción.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-3 sm:gap-4 items-start group">
+          <div class="p-2.5 sm:p-3 rounded-2xl bg-amber-500/15 border-2 border-[#d97706] text-[#b45309] font-black shrink-0">
+            <i data-lucide="shield-check" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+          </div>
+          <div>
+            <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] mb-1 tracking-wider">Entorno Profesional</h4>
+            <p class="text-stone-700 text-xs font-medium leading-relaxed">Roles definidos y transparencia en cada etapa de desarrollo.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-3 sm:gap-4 items-start group">
+          <div class="p-2.5 sm:p-3 rounded-2xl bg-amber-500/15 border-2 border-[#d97706] text-[#b45309] font-black shrink-0">
+            <i data-lucide="graduation-cap" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+          </div>
+          <div>
+            <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] mb-1 tracking-wider">Cultura de Aprendizaje</h4>
+            <p class="text-stone-700 text-xs font-medium leading-relaxed">Intercambio constante de conocimientos sobre creación en Minecraft.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. SECCIÓN CONTACTO Y FORMULARIO ================= -->
+    <section id="contact" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto relative z-10">
+      <div class="text-center mb-12 sm:mb-16 reveal">
+        <div class="text-center my-2 sm:my-4">
+          <h2 class="text-2xl sm:text-4xl md:text-5xl font-heavitas text-[#261505] tracking-tight">
+            Conéctate con <span class="text-[#d97706]">nosotros</span>
+          </h2>
+        </div>
+        <p class="text-stone-700 text-xs sm:text-base max-w-xl mx-auto mt-2 sm:mt-4 font-semibold">
+          Únete a nuestra comunidad en Discord o postula directamente completando el formulario.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-start reveal">
+        <div class="lg:col-span-5 space-y-4 sm:space-y-6">
+          <div class="discord-card-dynamic rounded-3xl p-5 sm:p-6 text-white relative overflow-hidden group">
+            <div class="flex items-center justify-between mb-3 sm:mb-4">
+              <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black uppercase tracking-wider">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>Comunidad Oficial</span>
+              </div>
+              <img src="DC.png" alt="Discord" class="w-9 h-9 sm:w-10 sm:h-10 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/50x50?text=DC';">
+            </div>
+            
+            <h3 class="font-heavitas text-base sm:text-xl text-white mb-2 tracking-wide">Únete a nuestro Discord</h3>
+            <p class="text-xs text-indigo-100 font-medium mb-5">Chatea con el equipo, conoce convocatorias y ve avances exclusivos.</p>
+            
+            <a href="https://discord.gg/br2efxgmud" target="_blank" class="cartoon-btn w-full py-3 sm:py-3.5 rounded-xl text-[10px] sm:text-[11px] uppercase tracking-wider flex items-center justify-center gap-2 bg-white text-black font-heavitas">
+              <span>ENTRAR A LA COMUNIDAD</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <div class="glass-pill-warm p-5 sm:p-6 rounded-3xl">
+            <h4 class="font-heavitas text-xs text-[#b45309] uppercase tracking-wider mb-3 sm:mb-4 flex items-center gap-2">
+              <i data-lucide="share-2" class="w-4 h-4 text-[#b45309]"></i> SÍGUENOS EN REDES
+            </h4>
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+              <a href="https://x.com/KProjectStudios" target="_blank" class="cartoon-btn-secondary p-3 sm:p-4 rounded-2xl flex flex-col items-center justify-center gap-1.5 sm:gap-2">
+                <img src="X.png" alt="X Twitter" class="w-6 h-6 sm:w-7 sm:h-7 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=X';">
+                <span class="text-[9px] sm:text-[10px] font-heavitas uppercase tracking-wider">X (Twitter)</span>
+              </a>
+              <a href="https://www.youtube.com/@KProjectsStudios" target="_blank" class="cartoon-btn-secondary p-3 sm:p-4 rounded-2xl flex flex-col items-center justify-center gap-1.5 sm:gap-2">
+                <img src="YT.png" alt="YouTube" class="w-7 h-7 sm:w-8 sm:h-8 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=YT';">
+                <span class="text-[9px] sm:text-[10px] font-heavitas uppercase tracking-wider">YouTube</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORMULARIO DE CANDIDATURA / CONTACTO -->
+        <div class="lg:col-span-7">
+          <div class="glass-pill-warm p-5 sm:p-10 rounded-3xl">
+            <h3 class="text-lg sm:text-2xl font-heavitas text-[#261505] mb-1 sm:mb-2">Formulario de Contacto</h3>
+            <p class="text-stone-700 text-xs font-medium mb-4 sm:mb-6">Completa todos los datos requeridos para comunicarte con nuestro equipo.</p>
+
+            <form id="contactForm" class="space-y-3 sm:space-y-4">
+              
+              <div class="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                <div>
+                  <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#261505] mb-1 sm:mb-2">Nombre de Discord *</label>
+                  <input type="text" id="formNombreDiscord" placeholder="Ej: usuario_discord" required class="w-full px-3.5 py-3 rounded-xl bg-amber-50/90 border-2 border-amber-300 text-stone-900 text-xs sm:text-sm font-semibold focus:outline-none focus:border-[#d97706]">
+                </div>
+                <div>
+                  <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#261505] mb-1 sm:mb-2">Nombre Real *</label>
+                  <input type="text" id="formNombreReal" placeholder="Ej: Juan Pérez" required class="w-full px-3.5 py-3 rounded-xl bg-amber-50/90 border-2 border-amber-300 text-stone-900 text-xs sm:text-sm font-semibold focus:outline-none focus:border-[#d97706]">
+                </div>
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                <div>
+                  <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#261505] mb-1 sm:mb-2">Correo Electrónico *</label>
+                  <input type="email" id="formEmail" placeholder="correo@ejemplo.com" required class="w-full px-3.5 py-3 rounded-xl bg-amber-50/90 border-2 border-amber-300 text-stone-900 text-xs sm:text-sm font-semibold focus:outline-none focus:border-[#d97706]">
+                </div>
+                <div>
+                  <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#261505] mb-1 sm:mb-2">País *</label>
+                  <input type="text" id="formPais" placeholder="Ej: México, España, Colombia..." required class="w-full px-3.5 py-3 rounded-xl bg-amber-50/90 border-2 border-amber-300 text-stone-900 text-xs sm:text-sm font-semibold focus:outline-none focus:border-[#d97706]">
+                </div>
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                <div>
+                  <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#261505] mb-1 sm:mb-2">Edad / Mayoría de Edad *</label>
+                  <input type="text" id="formEdad" placeholder="Ej: 19 años / Mayor de edad" required class="w-full px-3.5 py-3 rounded-xl bg-amber-50/90 border-2 border-amber-300 text-stone-900 text-xs sm:text-sm font-semibold focus:outline-none focus:border-[#d97706]">
+                </div>
+                <div>
+                  <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#261505] mb-1 sm:mb-2">Portafolio (Link Obligatorio) *</label>
+                  <input type="url" id="formPortafolio" placeholder="https://artstation.com/tu_perfil" required class="w-full px-3.5 py-3 rounded-xl bg-amber-50/90 border-2 border-amber-300 text-xs sm:text-sm font-semibold focus:outline-none focus:border-[#d97706]">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#261505] mb-1 sm:mb-2">Asunto *</label>
+                <input type="text" id="formAsunto" placeholder="Escribe aquí el asunto de tu mensaje..." required class="w-full px-3.5 py-3 rounded-xl bg-amber-50/90 border-2 border-amber-300 text-stone-900 text-xs sm:text-sm font-semibold focus:outline-none focus:border-[#d97706]">
+              </div>
+
+              <div>
+                <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#261505] mb-1 sm:mb-2">Mensaje *</label>
+                <textarea id="formMensaje" rows="3" required placeholder="Escribe detalladamente tu propuesta o mensaje..." class="w-full px-3.5 py-3 rounded-xl bg-amber-50/90 border-2 border-amber-300 text-stone-900 text-xs sm:text-sm font-semibold focus:outline-none focus:border-[#d97706]"></textarea>
+              </div>
+
+              <button type="submit" id="formSubmitBtn" class="cartoon-btn w-full py-3.5 sm:py-4 rounded-xl text-xs uppercase tracking-wider mt-2 flex items-center justify-center gap-2 cursor-pointer">
+                <span id="btnText">ENVIAR SOLICITUD A K PROJECT STUDIOS</span>
+                <i data-lucide="send" id="btnIcon" class="w-4 h-4"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t-2 border-amber-300 bg-[#fef3c7]/60 py-8 text-center text-xs text-stone-800 font-semibold relative z-10">
+      <div class="max-w-5xl mx-auto px-4 flex flex-col items-center justify-center gap-3">
+        <p class="text-center font-bold text-[11px] sm:text-xs">
+          © 2026 K PROJECT STUDIOS. Minecraft Marketplace Official Content Creators.
+        </p>
+        <div class="flex items-center justify-center gap-4 text-[10px] sm:text-[11px] font-bold text-stone-800">
+          <button onclick="openModal('modalTerminos')" class="hover:text-[#b45309] transition-colors underline decoration-[#b45309]/50 cursor-pointer">
+            Términos y Condiciones
+          </button>
+          <span>•</span>
+          <button onclick="openModal('modalPrivacidad')" class="hover:text-[#b45309] transition-colors underline decoration-[#b45309]/50 cursor-pointer">
+            Políticas de Privacidad
+          </button>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- MODAL VISTA PREVIA DETALLADA -->
+  <div id="modalProductDetail" class="fixed inset-0 z-50 bg-black/75 hidden flex items-center justify-center p-3 sm:p-4">
+    <div class="glass-pill-warm max-w-4xl w-full max-h-[92vh] flex flex-col rounded-3xl border-4 border-[#ffa800] p-5 sm:p-8 text-left relative shadow-2xl overflow-y-auto">
+      <button onclick="closeModal('modalProductDetail')" class="absolute top-4 right-4 p-2 rounded-xl bg-amber-100 border border-amber-300 text-stone-800 hover:bg-amber-200 transition cursor-pointer z-20">
+        <i data-lucide="x" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+      </button>
+
+      <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center mt-2">
+        <div class="lg:col-span-6 flex items-center justify-center bg-[#fef3c7] rounded-2xl p-4 sm:p-6 border border-amber-300 relative">
+          <img id="modalProductImg" src="" alt="Vista Previa Producto" class="max-h-60 sm:max-h-96 w-auto object-contain">
+        </div>
+
+        <div class="lg:col-span-6 space-y-3 sm:space-y-4">
+          <span id="modalProductTag" class="inline-block px-3 py-1 rounded-md bg-[#ffd928] text-black font-extrabold text-[10px] uppercase border border-black shadow-[2px_2px_0px_0px_#000]">
+            CATEGORÍA
+          </span>
+          <h3 id="modalProductTitle" class="text-xl sm:text-3xl font-heavitas text-[#261505]">Nombre del Producto</h3>
+          <p id="modalProductDesc" class="text-stone-800 text-xs sm:text-sm font-medium leading-relaxed">
+            Descripción completa y detallada...
+          </p>
+
+          <div class="border-t border-amber-200 pt-3 sm:pt-4">
+            <h4 class="text-xs font-black uppercase text-[#b45309] tracking-wider mb-2 flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-4 h-4"></i> LO QUE INCLUYE ESTE PAQUETE:
+            </h4>
+            <ul id="modalProductFeatures" class="grid grid-cols-1 gap-1.5 text-xs font-bold text-stone-800"></ul>
+          </div>
+
+          <div class="pt-2 sm:pt-4">
+            <a id="modalProductBuyBtn" href="https://www.minecraft.net/marketplace" target="_blank" class="cartoon-btn w-full py-3.5 sm:py-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+              <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+              <span>COMPRAR AHORA EN MARKETPLACE</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL TÉRMINOS Y CONDICIONES (FLUIDO A 60FPS) -->
+  <div id="modalTerminos" class="fixed inset-0 z-50 bg-black/75 hidden flex items-center justify-center p-3 sm:p-4">
+    <div class="glass-pill-warm max-w-3xl w-full max-h-[85vh] flex flex-col rounded-3xl border-4 border-[#ffa800] p-5 sm:p-8 text-left relative shadow-2xl">
+      <div class="flex items-center justify-between border-b border-amber-300 pb-3 mb-3 sm:pb-4 sm:mb-4">
+        <h3 class="font-heavitas text-base sm:text-xl text-[#261505] flex items-center gap-2">
+          <i data-lucide="file-text" class="w-5 h-5 text-[#b45309]"></i> Términos y Condiciones
+        </h3>
+        <button onclick="closeModal('modalTerminos')" class="p-2 rounded-xl bg-amber-100 border border-amber-300 text-stone-800 hover:bg-amber-200 transition cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="overflow-y-auto space-y-3 sm:space-y-4 text-xs sm:text-sm text-stone-800 pr-1 leading-relaxed font-medium">
+        <p><strong class="text-[#261505] font-extrabold">1. Aceptación de los Términos:</strong> Al acceder, navegar y utilizar el sitio web oficial de K Project Studios, el usuario acepta de manera plena e incondicional cumplir con todos los términos, condiciones y avisos legales aquí contenidos.</p>
+        <p><strong class="text-[#261505] font-extrabold">2. Propiedad Intelectual e Industrial:</strong> Todos los contenidos digitales publicados, incluyendo pero no limitándose a modelos 3D, mapas, archivos de comportamiento (Add-ons), imágenes, ilustraciones, marcas, logotipos, efectos sonoros e interfaces visuales, son propiedad exclusiva de K Project Studios o de sus respectivos licenciantes, protegidos por leyes internacionales de derechos de autor.</p>
+        <p><strong class="text-[#261505] font-extrabold">3. Licencia de Uso de Contenidos:</strong> Los productos adquiridos o descargados a través de enlaces al Minecraft Marketplace oficial otorgan al comprador una licencia limitada, personal, no exclusiva e intransferible para su uso recreativo personal dentro de la plataforma Minecraft de Mojang AB / Microsoft Corporation.</p>
+        <p><strong class="text-[#261505] font-extrabold">4. Prohibiciones y Restricciones:</strong> Queda strictly prohibida la redistribución, reventa, decompilación, modificación no autorizada o ingeniería inversa de cualquier archivo digital perteneciente a K Project Studios sin el consentimiento previo por escrito de la dirección del estudio.</p>
+        <p><strong class="text-[#261505] font-extrabold">5. Desvinculación Oficial:</strong> K Project Studios es un estudio asociado e independiente de creación de contenido. Minecraft es una marca registrada de Mojang AB y Microsoft Corporation. Este sitio web no está afiliado ni respaldado directamente por Mojang AB salvo por la relación comercial oficial dentro de la red de partners del Marketplace.</p>
+        <p><strong class="text-[#261505] font-extrabold">6. Modificaciones de los Términos:</strong> K Project Studios se reserva el derecho de actualizar o modificar los presentes Términos y Condiciones en cualquier momento sin previo aviso.</p>
+      </div>
+      <div class="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-amber-300 flex justify-end">
+        <button onclick="closeModal('modalTerminos')" class="cartoon-btn px-6 py-2.5 rounded-xl text-xs uppercase cursor-pointer">ACEPTAR Y ENTENDIDO</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL POLÍTICAS DE PRIVACIDAD (FLUIDO A 60FPS) -->
+  <div id="modalPrivacidad" class="fixed inset-0 z-50 bg-black/75 hidden flex items-center justify-center p-3 sm:p-4">
+    <div class="glass-pill-warm max-w-3xl w-full max-h-[85vh] flex flex-col rounded-3xl border-4 border-[#ffd928] p-5 sm:p-8 text-left relative shadow-2xl">
+      <div class="flex items-center justify-between border-b border-amber-300 pb-3 mb-3 sm:pb-4 sm:mb-4">
+        <h3 class="font-heavitas text-base sm:text-xl text-[#261505] flex items-center gap-2">
+          <i data-lucide="shield" class="w-5 h-5 text-[#b45309]"></i> Políticas de Privacidad
+        </h3>
+        <button onclick="closeModal('modalPrivacidad')" class="p-2 rounded-xl bg-amber-100 border border-amber-300 text-stone-800 hover:bg-amber-200 transition cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="overflow-y-auto space-y-3 sm:space-y-4 text-xs sm:text-sm text-stone-800 pr-1 leading-relaxed font-medium">
+        <p><strong class="text-[#261505] font-extrabold">1. Recopilación de Información Personal:</strong> K Project Studios únicamente recopila información personal como nombre de usuario de Discord, nombre real, dirección de correo electrónico, país, edad y enlace de portafolio profesional cuando el usuario la proporciona de manera voluntaria mediante nuestro formulario de contacto.</p>
+        <p><strong class="text-[#261505] font-extrabold">2. Finalidad del Tratamiento de Datos:</strong> Los datos personales recolectados son utilizados de manera exclusiva para procesar solicitudes de contacto, evaluar candidaturas de creadores interesados en unirse al estudio y gestionar comunicaciones de soporte técnico.</p>
+        <p><strong class="text-[#261505] font-extrabold">3. No Compartición con Terceros:</strong> K Project Studios asume un compromiso estricto con la confidencialidad. Bajo ninguna circunstancia venderemos, alquilaremos, comercializaremos o cederemos datos personales a terceras empresas u organizaciones con fines publicitarios.</p>
+        <p><strong class="text-[#261505] font-extrabold">4. Seguridad y Almacenamiento:</strong> Implementamos medidas de seguridad técnicas y organizativas para proteger la información transmitida a través de nuestros sistemas seguros alojados en Cloudflare.</p>
+        <p><strong class="text-[#261505] font-extrabold">5. Enlaces a Sitios Web de Terceros:</strong> Nuestro portal puede incluir enlaces hacia plataformas externas como Discord, X (Twitter), YouTube y el portal oficial de Minecraft Marketplace.</p>
+        <p><strong class="text-[#261505] font-extrabold">6. Derechos del Usuario:</strong> Cualquier usuario puede solicitar la corrección, actualización o cancelación definitiva de sus datos personales de nuestras bases de datos en cualquier momento.</p>
+      </div>
+      <div class="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-amber-300 flex justify-end">
+        <button onclick="closeModal('modalPrivacidad')" class="cartoon-btn px-6 py-2.5 rounded-xl text-xs uppercase cursor-pointer">COMPRENDIDO Y ACEPTAR</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS OPTIMIZADOS -->
+  <script>
+    lucide.createIcons();
+
+    function openModal(id) { 
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal(id) { 
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    // 🕹️ MOTOR DE INTERACCIÓN 3D TILT AL PASAR EL MOUSE POR EL GIF DE INICIO (DESKTOP ONLY)
+    const hero3dContainer = document.getElementById('hero3dContainer');
+    const hero3dCard = document.getElementById('hero3dCard');
+
+    if (hero3dContainer && hero3dCard && window.innerWidth > 768) {
+      hero3dContainer.addEventListener('mousemove', (e) => {
+        const rect = hero3dContainer.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -16; 
+        const rotateY = ((x - centerX) / centerX) * 16;
+
+        hero3dCard.classList.remove('reset-tilt');
+        hero3dCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      hero3dContainer.addEventListener('mouseleave', () => {
+        hero3dCard.classList.add('reset-tilt');
+        hero3dCard.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+      });
+    }
+
+    const productsData = {
+      'bee-kingdom': {
+        title: 'Bee Kingdom Addon v2.0',
+        tag: '⭐ DESTACADO / ADD-ON',
+        img: 'product-render.png',
+        desc: 'El complemento definitivo que transforma por completo el comportamiento de las abejas y la miel en Minecraft Bedrock. Añade nuevas colmenas gigantes, abejas reina con IA avanzada, ítems de recolección y armas temáticas de miel.',
+        features: [
+          'Más de 10 nuevos tipos de abejas customizadas',
+          'Modelos 3D creados en Blockbench HD',
+          'Nuevas mecánicas de cultivo y apicultura avanzada',
+          'Interfaz de usuario (UI) personalizada estilo Miel',
+          'Totalmente compatible con Multijugador y Realms'
+        ],
+        buyUrl: 'https://www.minecraft.net/marketplace'
+      },
+      'dragons-realm': {
+        title: 'Dragons Realm Adventure',
+        tag: 'WORLD MAP / AVENTURA RPG',
+        img: 'ofrecemos1.png',
+        desc: 'Explora un vasto reino medieval habitado por temibles dragones. Completa misiones secundarias, rescata aldeanos, equipa armaduras legendarias y derrota al Dragón Antiguo en una batalla épica sin precedentes.',
+        features: [
+          'Mapa de aventuras con historia de +5 horas',
+          'Jefes de mundo con barras de vida personalizadas',
+          'Sistema de monturas de dragones voladores',
+          'Música de ambiente y doblaje de voz original',
+          'Pueblos interactivos con comerciantes'
+        ],
+        buyUrl: 'https://www.minecraft.net/marketplace'
+      },
+      'cyber-skins': {
+        title: 'Cyber Neon HD Skins',
+        tag: 'SKIN PACK / FUTURISTA',
+        img: 'ofrecemos2.png',
+        desc: 'Lleva tu estilo al siguiente nivel en tus servidores o mundos multijugador con este paquete de 12 skins cyberpunk de alta definición con detalles en neón brillante.',
+        features: [
+          '12 Skins exclusivas en HD (128x128)',
+          'Diseños futuristas de ciborgs, hackers y pilotos',
+          'Colores en neón brillante de alto contraste',
+          'Soporte completo para avatares masculinos y femeninos'
+        ],
+        buyUrl: 'https://www.minecraft.net/marketplace'
+      }
+    };
+
+    function openProductModal(productId) {
+      const data = productsData[productId];
+      if (!data) return;
+
+      document.getElementById('modalProductTitle').innerText = data.title;
+      document.getElementById('modalProductTag').innerText = data.tag;
+      document.getElementById('modalProductImg').src = data.img;
+      document.getElementById('modalProductDesc').innerText = data.desc;
+      document.getElementById('modalProductBuyBtn').href = data.buyUrl;
+
+      const featuresContainer = document.getElementById('modalProductFeatures');
+      featuresContainer.innerHTML = '';
+      data.features.forEach(feat => {
+        const li = document.createElement('li');
+        li.className = 'flex items-center gap-2 text-stone-800';
+        li.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4 text-[#d97706] shrink-0"></i> ${feat}`;
+        featuresContainer.appendChild(li);
+      });
+
+      lucide.createIcons();
+      openModal('modalProductDetail');
+    }
+
+    // WORKER FORMULARIO
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('formSubmitBtn');
+    const btnText = document.getElementById('btnText');
+    const CLOUDFLARE_WORKER_URL = 'https://kevproject.andresler12345.workers.dev/';
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      btnText.innerText = 'ENVIANDO SOLICITUD...';
+
+      const payload = {
+        nombreDiscord: document.getElementById('formNombreDiscord').value.trim(),
+        nombreReal: document.getElementById('formNombreReal').value.trim(),
+        email: document.getElementById('formEmail').value.trim(),
+        pais: document.getElementById('formPais').value.trim(),
+        edad: document.getElementById('formEdad').value.trim(),
+        portafolio: document.getElementById('formPortafolio').value.trim(),
+        asunto: document.getElementById('formAsunto').value.trim(),
+        mensaje: document.getElementById('formMensaje').value.trim()
+      };
+
+      try {
+        const response = await fetch(CLOUDFLARE_WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          alert('¡Gracias! Tu solicitud ha sido enviada con éxito a K Project Studios.');
+          contactForm.reset();
+        } else {
+          alert('Hubo un inconveniente al enviar la solicitud. Por favor intenta nuevamente.');
+        }
+      } catch (err) {
+        alert('Error de red al conectar con el servidor.');
+      } finally {
+        submitBtn.disabled = false;
+        btnText.innerText = 'ENVIAR SOLICITUD A K PROJECT STUDIOS';
+      }
+    });
+
+    // SEGURIDAD
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(e.keyCode)) || (e.ctrlKey && [85, 83].includes(e.keyCode))) {
+        e.preventDefault();
+      }
+    });
+
+    // ILUMINACIÓN DINÁMICA
+    const hero = document.getElementById('heroSection');
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      hero.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+      hero.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    });
+
+    // PARTICULAS OPTIMIZADAS
+    const bgCanvas = document.getElementById('bgParticlesCanvas');
+    const bgCtx = bgCanvas.getContext('2d');
+    let bgParticles = [];
+    function resizeBgCanvas() { bgCanvas.width = window.innerWidth; bgCanvas.height = window.innerHeight; }
+    window.addEventListener('resize', resizeBgCanvas);
+    resizeBgCanvas();
+
+    class BgParticle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * bgCanvas.width;
+        this.y = bgCanvas.height + Math.random() * 30;
+        this.size = Math.random() * 2.5 + 1;
+        this.speedY = -(Math.random() * 0.6 + 0.2);
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.opacity = Math.random() * 0.6 + 0.2;
+        this.color = Math.random() > 0.5 ? '#ffa800' : '#ffd928';
+      }
+      update() {
+        this.y += this.speedY; this.x += this.speedX; this.opacity -= 0.0015;
+        if (this.y < -10 || this.opacity <= 0) this.reset();
+      }
+      draw() {
+        bgCtx.save(); bgCtx.globalAlpha = Math.max(0, this.opacity);
+        bgCtx.fillStyle = this.color; bgCtx.fillRect(this.x, this.y, this.size, this.size); bgCtx.restore();
+      }
+    }
+    for (let i = 0; i < 30; i++) bgParticles.push(new BgParticle());
+    function animateBgParticles() { bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height); bgParticles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animateBgParticles); }
+    animateBgParticles();
+
+    // SCROLLSPY CORREGIDO (MARCA OBLIGATORIAMENTE INICIO EN EL HERO)
+    const sections = document.querySelectorAll('section[id]');
+    const navTabs = document.querySelectorAll('.mc-item-tab');
+
+    function updateActiveTab() {
+      let current = 'heroSection';
+      const scrollY = window.scrollY;
+
+      if (scrollY < 200) {
+        current = 'heroSection';
+      } else {
+        sections.forEach(s => {
+          const sectionTop = s.offsetTop - 180;
+          const sectionHeight = s.offsetHeight;
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            current = s.getAttribute('id');
+          }
+        });
+      }
+
+      navTabs.forEach(t => {
+        t.classList.remove('active');
+        if (t.getAttribute('href') === `#${current}`) {
+          t.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveTab, { passive: true });
+    window.addEventListener('load', updateActiveTab);
+
+    // REVEAL ANIMATOR
+    const revealObserver = new IntersectionObserver((entries) => { 
+      entries.forEach(e => { 
+        if (e.isIntersecting) e.target.classList.add('active'); 
+      }); 
+    }, { threshold: 0.05 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>
