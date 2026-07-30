@@ -73,6 +73,9 @@
       font-weight: 900; text-transform: uppercase;
     }
 
+    /* 🪤 Estilo oculto para trampa anti-bots (Honeypot) */
+    .hp-field { display: none !important; opacity: 0; position: absolute; left: -9999px; }
+
     /* ================= 2. ANIMACIONES ================= */
     @keyframes floatHeroPortal { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-12px) rotate(1deg); } }
     @keyframes floatFreestanding { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
@@ -117,7 +120,7 @@
     .cartoon-btn-secondary:hover { border-color: #000000; background: #fef3c7; color: #000000; transform: translate(-2px, -2px); box-shadow: 5px 5px 0px 0px #b45309; }
     .dark .cartoon-btn-secondary { background: #1e293b; color: #f8fafc; border-color: #475569; box-shadow: 3px 3px 0px 0px #0f172a; }
     .dark .cartoon-btn-secondary:hover { background: #334155; color: #ffffff; border-color: #64748b; box-shadow: 5px 5px 0px 0px #020617; }
-    .discord-card-dynamic { background: linear-gradient(135deg, #5865F2 0%, #2b32a3 100%); border: 2.5px solid #312e81; box-shadow: 0 12px 28px rgba(88, 101, 242, 0.22); }
+    .discord-card-dynamic { background: linear-gradient(135deg, #5865F2 0%, #2b32a3 100%); border: 2.5px solid #312e81; box-shadow: 0 12px 28px rgba(88, 101, 242, 0.25); }
     .reveal { opacity: 0; transform: translateY(25px); transition: opacity 0.6s ease, transform 0.6s ease; will-change: opacity, transform; }
     .reveal.active { opacity: 1; transform: translateY(0); }
   </style>
@@ -440,7 +443,7 @@
       </div>
     </section>
 
-    <!-- ================= 4. LO QUE OFRECEMOS ================= -->
+    <!-- ================= 4. LO QUE OFRECEMOS (ICONOS SUELTOS Y MÁS GRANDES) ================= -->
     <section id="services" class="py-16 sm:py-24 px-4 sm:px-6 max-w-7xl mx-auto relative z-10">
       <div class="text-center mb-12 sm:mb-16 reveal">
         <h2 class="text-2xl sm:text-5xl font-heavitas text-[#261505] dark:text-white tracking-tight">
@@ -481,12 +484,11 @@
         </div>
       </div>
 
+      <!-- 6 ÍTEMS: ICONOS SUELTOS Y MÁS GRANDES -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 reveal pt-6 sm:pt-8 border-t border-amber-300 dark:border-slate-700">
         <!-- ITEM 1 -->
-        <div class="flex gap-3 sm:gap-4 items-start group">
-          <div class="p-2.5 sm:p-3 rounded-2xl bg-amber-500/15 dark:bg-amber-500/20 border-2 border-[#d97706] text-[#b45309] dark:text-[#ffa800] font-black shrink-0">
-            <img src="icono1.png" alt="Icono 1" class="w-5 h-5 sm:w-6 sm:h-6 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/24x24?text=1';">
-          </div>
+        <div class="flex gap-4 items-start group">
+          <img src="icono1.png" alt="Icono 1" class="w-9 h-9 sm:w-11 sm:h-11 object-contain shrink-0 transform group-hover:scale-110 transition-transform duration-300" onerror="this.onerror=null; this.src='https://via.placeholder.com/44x44?text=1';">
           <div>
             <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] dark:text-white mb-1 tracking-wider lang-es">Novedades Oficiales</h4>
             <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] dark:text-white mb-1 tracking-wider lang-en">Official News</h4>
@@ -495,10 +497,8 @@
           </div>
         </div>
         <!-- ITEM 2 -->
-        <div class="flex gap-3 sm:gap-4 items-start group">
-          <div class="p-2.5 sm:p-3 rounded-2xl bg-amber-500/15 dark:bg-amber-500/20 border-2 border-[#d97706] text-[#b45309] dark:text-[#ffa800] font-black shrink-0">
-            <img src="icono2.png" alt="Icono 2" class="w-5 h-5 sm:w-6 sm:h-6 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/24x24?text=2';">
-          </div>
+        <div class="flex gap-4 items-start group">
+          <img src="icono2.png" alt="Icono 2" class="w-9 h-9 sm:w-11 sm:h-11 object-contain shrink-0 transform group-hover:scale-110 transition-transform duration-300" onerror="this.onerror=null; this.src='https://via.placeholder.com/44x44?text=2';">
           <div>
             <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] dark:text-white mb-1 tracking-wider lang-es">Red de Creadores</h4>
             <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] dark:text-white mb-1 tracking-wider lang-en">Creator Network</h4>
@@ -507,10 +507,8 @@
           </div>
         </div>
         <!-- ITEM 3 -->
-        <div class="flex gap-3 sm:gap-4 items-start group">
-          <div class="p-2.5 sm:p-3 rounded-2xl bg-emerald-500/15 dark:bg-emerald-500/20 border-2 border-emerald-600 text-emerald-800 dark:text-emerald-400 font-black shrink-0">
-            <img src="icono3.png" alt="Icono 3" class="w-5 h-5 sm:w-6 sm:h-6 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/24x24?text=3';">
-          </div>
+        <div class="flex gap-4 items-start group">
+          <img src="icono3.png" alt="Icono 3" class="w-9 h-9 sm:w-11 sm:h-11 object-contain shrink-0 transform group-hover:scale-110 transition-transform duration-300" onerror="this.onerror=null; this.src='https://via.placeholder.com/44x44?text=3';">
           <div>
             <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] dark:text-white mb-1 tracking-wider lang-es">Atención Dedicada</h4>
             <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] dark:text-white mb-1 tracking-wider lang-en">Dedicated Support</h4>
@@ -519,10 +517,8 @@
           </div>
         </div>
         <!-- ITEM 4 -->
-        <div class="flex gap-3 sm:gap-4 items-start group">
-          <div class="p-2.5 sm:p-3 rounded-2xl bg-cyan-500/15 dark:bg-cyan-500/20 border-2 border-cyan-600 text-cyan-800 dark:text-cyan-400 font-black shrink-0">
-            <img src="icono4.png" alt="Icono 4" class="w-5 h-5 sm:w-6 sm:h-6 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/24x24?text=4';">
-          </div>
+        <div class="flex gap-4 items-start group">
+          <img src="icono4.png" alt="Icono 4" class="w-9 h-9 sm:w-11 sm:h-11 object-contain shrink-0 transform group-hover:scale-110 transition-transform duration-300" onerror="this.onerror=null; this.src='https://via.placeholder.com/44x44?text=4';">
           <div>
             <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] dark:text-white mb-1 tracking-wider lang-es">Oportunidades</h4>
             <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] dark:text-white mb-1 tracking-wider lang-en">Opportunities</h4>
@@ -531,10 +527,8 @@
           </div>
         </div>
         <!-- ITEM 5 -->
-        <div class="flex gap-3 sm:gap-4 items-start group">
-          <div class="p-2.5 sm:p-3 rounded-2xl bg-amber-500/15 dark:bg-amber-500/20 border-2 border-[#d97706] text-[#b45309] dark:text-[#ffa800] font-black shrink-0">
-            <img src="icono5.png" alt="Icono 5" class="w-5 h-5 sm:w-6 sm:h-6 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/24x24?text=5';">
-          </div>
+        <div class="flex gap-4 items-start group">
+          <img src="icono5.png" alt="Icono 5" class="w-9 h-9 sm:w-11 sm:h-11 object-contain shrink-0 transform group-hover:scale-110 transition-transform duration-300" onerror="this.onerror=null; this.src='https://via.placeholder.com/44x44?text=5';">
           <div>
             <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] dark:text-white mb-1 tracking-wider lang-es">Entorno Profesional</h4>
             <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] dark:text-white mb-1 tracking-wider lang-en">Professional Env</h4>
@@ -543,10 +537,8 @@
           </div>
         </div>
         <!-- ITEM 6 -->
-        <div class="flex gap-3 sm:gap-4 items-start group">
-          <div class="p-2.5 sm:p-3 rounded-2xl bg-amber-500/15 dark:bg-amber-500/20 border-2 border-[#d97706] text-[#b45309] dark:text-[#ffa800] font-black shrink-0">
-            <img src="icono6.png" alt="Icono 6" class="w-5 h-5 sm:w-6 sm:h-6 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/24x24?text=6';">
-          </div>
+        <div class="flex gap-4 items-start group">
+          <img src="icono6.png" alt="Icono 6" class="w-9 h-9 sm:w-11 sm:h-11 object-contain shrink-0 transform group-hover:scale-110 transition-transform duration-300" onerror="this.onerror=null; this.src='https://via.placeholder.com/44x44?text=6';">
           <div>
             <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] dark:text-white mb-1 tracking-wider lang-es">Cultura de Aprendizaje</h4>
             <h4 class="text-xs sm:text-sm font-heavitas text-[#261505] dark:text-white mb-1 tracking-wider lang-en">Learning Culture</h4>
@@ -570,20 +562,35 @@
 
       <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-start reveal">
         <div class="lg:col-span-5 space-y-4 sm:space-y-6">
-          <!-- DISCORD -->
-          <div class="discord-card-dynamic rounded-3xl p-5 sm:p-6 text-white relative overflow-hidden group">
-            <div class="flex items-center justify-between mb-3 sm:mb-4">
-              <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black uppercase tracking-wider">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                <span class="lang-es">Comunidad Oficial</span><span class="lang-en">Official Community</span>
-              </div>
-              <img src="DC.png" alt="Discord" class="w-9 h-9 sm:w-10 sm:h-10 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/50x50?text=DC';">
+          
+          <!-- 🌟 TARJETA DISCORD REESTRUCTURADA CON 'fotodiscord.png' 🌟 -->
+          <div class="discord-card-dynamic rounded-3xl p-5 sm:p-7 text-white relative overflow-hidden group">
+            <!-- Marca de agua de fondo -->
+            <div class="absolute -right-6 -bottom-6 w-44 sm:w-52 opacity-15 pointer-events-none group-hover:scale-105 group-hover:opacity-25 transition-all duration-500">
+              <img src="fotodiscord.png" alt="Discord Watermark" class="w-full h-auto object-contain" onerror="this.onerror=null; this.style.display='none';">
             </div>
-            <h3 class="font-heavitas text-base sm:text-xl text-white mb-2 tracking-wide lang-es">Únete a nuestro Discord</h3>
-            <h3 class="font-heavitas text-base sm:text-xl text-white mb-2 tracking-wide lang-en">Join our Discord</h3>
-            <p class="text-xs text-indigo-100 font-medium mb-5 lang-es">Chatea con el equipo, conoce convocatorias y ve avances exclusivos.</p>
-            <p class="text-xs text-indigo-100 font-medium mb-5 lang-en">Chat with the team, learn about open calls, and see exclusive previews.</p>
-            <a href="https://discord.gg/br2efxgmud" target="_blank" class="cartoon-btn w-full py-3 sm:py-3.5 rounded-xl text-[10px] sm:text-[11px] uppercase tracking-wider flex items-center justify-center gap-2 bg-white text-black font-heavitas">
+
+            <!-- Personaje principal y encabezado -->
+            <div class="relative z-10 flex flex-col sm:flex-row items-center gap-4 mb-4">
+              <div class="relative shrink-0 flex items-center justify-center">
+                <div class="absolute inset-0 bg-[#ffd928]/35 rounded-full blur-xl animate-pulse"></div>
+                <img src="fotodiscord.png" alt="Personaje Discord" class="w-24 sm:w-28 h-auto object-contain relative z-10 drop-shadow-[0_8px_20px_rgba(0,0,0,0.6)] transform group-hover:scale-105 group-hover:-rotate-2 transition-transform duration-300" onerror="this.onerror=null; this.src='DC.png';">
+              </div>
+              
+              <div class="text-center sm:text-left flex-1">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black uppercase tracking-wider mb-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span class="lang-es">Comunidad Oficial</span><span class="lang-en">Official Community</span>
+                </div>
+                <h3 class="font-heavitas text-base sm:text-xl text-white tracking-wide leading-tight lang-es">Únete a nuestro Discord</h3>
+                <h3 class="font-heavitas text-base sm:text-xl text-white tracking-wide leading-tight lang-en">Join our Discord</h3>
+              </div>
+            </div>
+
+            <p class="relative z-10 text-xs text-indigo-100 font-medium mb-5 leading-relaxed text-center sm:text-left lang-es">Chatea con el equipo, conoce convocatorias de creadores y accede a avances exclusivos de nuestros proyectos.</p>
+            <p class="relative z-10 text-xs text-indigo-100 font-medium mb-5 leading-relaxed text-center sm:text-left lang-en">Chat with the team, learn about open creator calls, and see exclusive previews of our projects.</p>
+
+            <a href="https://discord.gg/br2efxgmud" target="_blank" class="relative z-10 cartoon-btn w-full py-3 sm:py-3.5 rounded-xl text-[10px] sm:text-[11px] uppercase tracking-wider flex items-center justify-center gap-2 bg-white text-black font-heavitas">
               <span class="lang-es">ENTRAR A LA COMUNIDAD</span><span class="lang-en">ENTER THE COMMUNITY</span>
               <i data-lucide="external-link" class="w-4 h-4"></i>
             </a>
@@ -608,7 +615,7 @@
           </div>
         </div>
 
-        <!-- FORMULARIO -->
+        <!-- FORMULARIO DE CONTACTO PROTEGIDO -->
         <div class="lg:col-span-7">
           <div class="glass-pill-warm p-5 sm:p-10 rounded-3xl">
             <h3 class="text-lg sm:text-2xl font-heavitas text-[#261505] dark:text-white mb-1 sm:mb-2 lang-es">Formulario de Contacto</h3>
@@ -617,6 +624,9 @@
             <p class="text-stone-700 dark:text-stone-400 text-xs font-medium mb-4 sm:mb-6 lang-en">Fill out all required fields to communicate with our team.</p>
 
             <form id="contactForm" class="space-y-3 sm:space-y-4">
+              <!-- 🪤 CAMPO TRAMPA HONEYPOT ANTI-BOTS -->
+              <input type="text" id="formWebsite" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+
               <div class="grid sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#261505] dark:text-stone-300 mb-1 sm:mb-2">
@@ -745,7 +755,7 @@
         <p><strong class="text-[#261505] dark:text-white font-extrabold">1. Aceptación de los Términos:</strong> Al acceder, navegar y utilizar el sitio web oficial de K Project Studios, el usuario acepta de manera plena e incondicional cumplir con todos los términos, condiciones y avisos legales aquí contenidos.</p>
         <p><strong class="text-[#261505] dark:text-white font-extrabold">2. Propiedad Intelectual e Industrial:</strong> Todos los contenidos digitales publicados, incluyendo pero no limitándose a modelos 3D, mapas, archivos de comportamiento (Add-ons), imágenes, ilustraciones, marcas, logotipos, efectos sonoros e interfaces visuales, son propiedad exclusiva de K Project Studios o de sus respectivos licenciantes, protegidos por leyes internacionales de derechos de autor.</p>
         <p><strong class="text-[#261505] dark:text-white font-extrabold">3. Licencia de Uso de Contenidos:</strong> Los productos adquiridos o descargados a través de enlaces al Minecraft Marketplace oficial otorgan al comprador una licencia limitada, personal, no exclusiva e intransferible para su uso recreativo personal dentro de la plataforma Minecraft de Mojang AB / Microsoft Corporation.</p>
-        <p><strong class="text-[#261505] dark:text-white font-extrabold">4. Prohibiciones y Restricciones:</strong> Queda strictly prohibida la redistribución, reventa, decompilación, modificación no autorizada o ingeniería inversa de cualquier archivo digital perteneciente a K Project Studios sin el consentimiento previo por escrito de la dirección del estudio.</p>
+        <p><strong class="text-[#261505] dark:text-white font-extrabold">4. Prohibiciones y Restricciones:</strong> Queda estrictamente prohibida la redistribución, reventa, decompilación, modificación no autorizada o ingeniería inversa de cualquier archivo digital perteneciente a K Project Studios sin el consentimiento previo por escrito de la dirección del estudio.</p>
         <p><strong class="text-[#261505] dark:text-white font-extrabold">5. Desvinculación Oficial:</strong> K Project Studios es un estudio asociado e independiente de creación de contenido. Minecraft es una marca registrada de Mojang AB y Microsoft Corporation. Este sitio web no está afiliado ni respaldado directamente por Mojang AB salvo por la relación comercial oficial dentro de la red de partners del Marketplace.</p>
         <p><strong class="text-[#261505] dark:text-white font-extrabold">6. Modificaciones de los Términos:</strong> K Project Studios se reserva el derecho de actualizar o modificar los presentes Términos y Condiciones en cualquier momento sin previo aviso.</p>
       </div>
@@ -965,7 +975,7 @@
       openModal('modalProductDetail');
     }
 
-    // ================= WORKER FORMULARIO =================
+    // ================= WORKER FORMULARIO CON PROTECCIÓN ANTI-BOTS =================
     const contactForm = document.getElementById('contactForm');
     const submitBtn = document.getElementById('formSubmitBtn');
     const btnText = document.getElementById('btnText');
@@ -985,17 +995,30 @@
         edad: document.getElementById('formEdad').value.trim(),
         portafolio: document.getElementById('formPortafolio').value.trim(),
         asunto: document.getElementById('formAsunto').value.trim(),
-        mensaje: document.getElementById('formMensaje').value.trim()
+        mensaje: document.getElementById('formMensaje').value.trim(),
+        website: document.getElementById('formWebsite') ? document.getElementById('formWebsite').value.trim() : '' // Campo trampa anti-bots
       };
 
       try {
-        const response = await fetch(CLOUDFLARE_WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        const response = await fetch(CLOUDFLARE_WORKER_URL, { 
+          method: 'POST', 
+          headers: { 'Content-Type': 'application/json' }, 
+          body: JSON.stringify(payload) 
+        });
         const result = await response.json();
-        if (response.ok && result.success) {
-          alert(placeholders[lang].alertOk); contactForm.reset();
-        } else { alert(placeholders[lang].alertErr); }
-      } catch (err) { alert(placeholders[lang].alertNet); } 
-      finally { submitBtn.disabled = false; btnText.innerText = placeholders[lang].btnText; }
+        if (response.ok && (result.success || result.status === 'ok')) {
+          alert(placeholders[lang].alertOk); 
+          contactForm.reset();
+        } else { 
+          alert(placeholders[lang].alertErr); 
+        }
+      } catch (err) { 
+        alert(placeholders[lang].alertNet); 
+      } 
+      finally { 
+        submitBtn.disabled = false; 
+        btnText.innerText = placeholders[lang].btnText; 
+      }
     });
 
     // SEGURIDAD
