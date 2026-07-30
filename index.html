@@ -78,18 +78,14 @@
 
     /* ================= 2. ANIMACIONES ================= */
     @keyframes floatHeroPortal { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-12px) rotate(1deg); } }
-    @keyframes floatFreestanding { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
     @keyframes kenburnsBg { 0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); } }
 
     .animate-portal-hero { animation: floatHeroPortal 5.5s ease-in-out infinite; will-change: transform; }
-    .animate-freestanding { animation: floatFreestanding 6s ease-in-out infinite; will-change: transform; }
     .animate-kenburns { animation: kenburnsBg 22s ease-in-out infinite alternate; will-change: transform; }
 
     .perspective-container { perspective: 1200px; }
     .tilt-card-3d { transform-style: preserve-3d; transition: transform 0.15s ease-out; will-change: transform; }
     .tilt-card-3d.reset-tilt { transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
-    .render-shadow-glow { filter: drop-shadow(0 12px 25px rgba(180, 83, 9, 0.22)); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); will-change: transform; }
-    .render-shadow-glow:hover { transform: scale(1.04) translateY(-6px); }
     .hero-dynamic-light { background: radial-gradient(650px circle at var(--mouse-x) var(--mouse-y), rgba(255, 217, 40, 0.22) 0%, rgba(255, 168, 0, 0.08) 40%, rgba(0, 0, 0, 0.2) 85%); pointer-events: none; }
 
     /* ================= 3. HEADER COMPACTO ================= */
@@ -120,7 +116,7 @@
     .cartoon-btn-secondary:hover { border-color: #000000; background: #fef3c7; color: #000000; transform: translate(-2px, -2px); box-shadow: 5px 5px 0px 0px #b45309; }
     .dark .cartoon-btn-secondary { background: #1e293b; color: #f8fafc; border-color: #475569; box-shadow: 3px 3px 0px 0px #0f172a; }
     .dark .cartoon-btn-secondary:hover { background: #334155; color: #ffffff; border-color: #64748b; box-shadow: 5px 5px 0px 0px #020617; }
-    .discord-card-dynamic { background: linear-gradient(135deg, #5865F2 0%, #2b32a3 100%); border: 2.5px solid #312e81; box-shadow: 0 12px 28px rgba(88, 101, 242, 0.25); }
+    .discord-card-dynamic { background: linear-gradient(135deg, #5865F2 0%, #2b32a3 100%); border: 3px solid #312e81; box-shadow: 0 16px 36px rgba(88, 101, 242, 0.35); }
     .reveal { opacity: 0; transform: translateY(25px); transition: opacity 0.6s ease, transform 0.6s ease; will-change: opacity, transform; }
     .reveal.active { opacity: 1; transform: translateY(0); }
   </style>
@@ -256,7 +252,7 @@
   <!-- CONTENEDOR CÁLIDO/OSCURO -->
   <div class="warm-light-section relative z-10 border-t-4 border-[#ffa800]">
 
-    <!-- ================= 2. QUIÉNES SOMOS ================= -->
+    <!-- ================= 2. QUIÉNES SOMOS (PERSONAJES ESTÁTICOS Y LIMPIOS) ================= -->
     <section id="about" class="py-14 sm:py-20 px-4 sm:px-6 max-w-7xl mx-auto relative z-10 overflow-hidden">
       <div class="text-center mb-12 sm:mb-16 relative z-10 reveal max-w-4xl mx-auto">
         <h2 class="text-2xl sm:text-5xl font-heavitas text-[#261505] dark:text-white tracking-tight mb-4 sm:mb-6">
@@ -272,10 +268,10 @@
         </div>
       </div>
 
+      <!-- PERSONAJE 1 (Estático sin glow) -->
       <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center mb-16 sm:mb-28 reveal relative pt-4 sm:pt-10">
         <div class="lg:col-span-6 flex justify-center relative z-20 overflow-visible">
-          <div class="absolute w-64 h-64 sm:w-[450px] sm:h-[450px] bg-[#f59e0b]/20 rounded-full blur-3xl pointer-events-none"></div>
-          <img src="personaje1.png" alt="Creativity" class="max-h-[420px] sm:max-h-[750px] lg:max-h-[950px] w-auto object-contain render-shadow-glow animate-freestanding relative z-10 origin-bottom" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x800?text=personaje1.png';">
+          <img src="personaje1.png" alt="Creativity" class="max-h-[420px] sm:max-h-[750px] lg:max-h-[950px] w-auto object-contain relative z-10 origin-bottom" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x800?text=personaje1.png';">
         </div>
         <div class="lg:col-span-6 space-y-3 sm:space-y-5 text-left mt-4 lg:mt-0 relative z-10">
           <h3 class="text-xl sm:text-4xl font-heavitas text-[#261505] dark:text-white leading-snug">
@@ -287,6 +283,7 @@
         </div>
       </div>
 
+      <!-- PERSONAJE 2 (Estático sin glow) -->
       <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center mb-16 sm:mb-20 reveal relative">
         <div class="lg:col-span-7 space-y-3 sm:space-y-5 text-left order-2 lg:order-1">
           <h3 class="text-xl sm:text-4xl font-heavitas text-[#261505] dark:text-white leading-snug">
@@ -301,15 +298,14 @@
           <p class="text-amber-950 dark:text-amber-100 text-xs sm:text-sm font-semibold italic lang-en">"Adventure maps, minigames, and texture packs designed to make every type of player fall in love."</p>
         </div>
         <div class="lg:col-span-5 flex justify-center relative order-1 lg:order-2">
-          <div class="absolute w-60 h-60 sm:w-80 sm:h-80 bg-[#f59e0b]/20 rounded-full blur-3xl pointer-events-none"></div>
-          <img src="personaje2.png" alt="Diversity" class="max-h-[380px] sm:max-h-[580px] w-auto object-contain render-shadow-glow animate-freestanding relative z-10" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x650?text=personaje2.png';">
+          <img src="personaje2.png" alt="Diversity" class="max-h-[380px] sm:max-h-[580px] w-auto object-contain relative z-10" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x650?text=personaje2.png';">
         </div>
       </div>
 
+      <!-- PERSONAJE 3 (Estático sin glow) -->
       <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-center reveal relative">
         <div class="lg:col-span-5 flex justify-center relative">
-          <div class="absolute w-60 h-60 sm:w-80 sm:h-80 bg-[#f59e0b]/20 rounded-full blur-3xl pointer-events-none"></div>
-          <img src="personaje3.png" alt="Quality" class="max-h-[380px] sm:max-h-[580px] w-auto object-contain render-shadow-glow animate-freestanding relative z-10" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x650?text=personaje3.png';">
+          <img src="personaje3.png" alt="Quality" class="max-h-[380px] sm:max-h-[580px] w-auto object-contain relative z-10" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x650?text=personaje3.png';">
         </div>
         <div class="lg:col-span-7 space-y-3 sm:space-y-5 text-left">
           <h3 class="text-xl sm:text-4xl font-heavitas text-[#261505] dark:text-white leading-snug">
@@ -334,11 +330,11 @@
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 reveal">
-        <!-- TARJETA 1 -->
+        <!-- TARJETA 1 (addon1.png - PRÓXIMAMENTE) -->
         <div class="glass-pill-warm rounded-3xl overflow-hidden flex flex-col justify-between group transition-all duration-300">
           <div>
             <div class="relative overflow-hidden cursor-pointer h-56 sm:h-64 bg-[#fef3c7] dark:bg-slate-800 flex items-center justify-center p-4 group/img" onclick="openProductModal('bee-kingdom')">
-              <img src="product-render.png" alt="Bee Kingdom Addon v2.0" class="max-h-full w-auto object-contain transition-transform duration-300 group-hover/img:scale-105" onerror="this.onerror=null; this.src='https://via.placeholder.com/380x280?text=product-render.png';">
+              <img src="addon1.png" alt="Bee Kingdom Addon v2.0" class="max-h-full w-auto object-contain transition-transform duration-300 group-hover/img:scale-105" onerror="this.onerror=null; this.src='https://via.placeholder.com/380x280?text=addon1.png';">
               <div class="absolute inset-0 bg-amber-950/60 dark:bg-black/60 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-2">
                 <span class="cartoon-btn px-4 py-2 text-xs rounded-xl flex items-center gap-1.5">
                   <i data-lucide="eye" class="w-4 h-4"></i> <span class="lang-es">VISTA PREVIA</span><span class="lang-en">PREVIEW</span>
@@ -361,18 +357,18 @@
               <i data-lucide="info" class="w-4 h-4"></i>
               <span class="lang-es">MÁS DETALLES</span><span class="lang-en">MORE DETAILS</span>
             </button>
-            <a href="https://www.minecraft.net/marketplace" target="_blank" class="cartoon-btn w-full py-3.5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+            <button onclick="notificarProximamente()" class="cartoon-btn w-full py-3.5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer">
               <i data-lucide="shopping-cart" class="w-4 h-4"></i>
               <span class="lang-es">COMPRAR EN MARKETPLACE</span><span class="lang-en">BUY ON MARKETPLACE</span>
-            </a>
+            </button>
           </div>
         </div>
 
-        <!-- TARJETA 2 -->
+        <!-- TARJETA 2 (adventure.png - PRÓXIMAMENTE) -->
         <div class="glass-pill-warm rounded-3xl overflow-hidden flex flex-col justify-between group transition-all duration-300">
           <div>
             <div class="relative overflow-hidden cursor-pointer h-56 sm:h-64 bg-[#fef3c7] dark:bg-slate-800 flex items-center justify-center p-4 group/img" onclick="openProductModal('dragons-realm')">
-              <img src="ofrecemos1.png" alt="Dragons Realm World" class="max-h-full w-full object-cover transition-transform duration-300 group-hover/img:scale-105" onerror="this.onerror=null; this.src='https://via.placeholder.com/380x280?text=Dragons+Realm';">
+              <img src="adventure.png" alt="Dragons Realm World" class="max-h-full w-full object-cover transition-transform duration-300 group-hover/img:scale-105" onerror="this.onerror=null; this.src='https://via.placeholder.com/380x280?text=adventure.png';">
               <div class="absolute inset-0 bg-amber-950/60 dark:bg-black/60 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-2">
                 <span class="cartoon-btn px-4 py-2 text-xs rounded-xl flex items-center gap-1.5">
                   <i data-lucide="eye" class="w-4 h-4"></i> <span class="lang-es">VISTA PREVIA</span><span class="lang-en">PREVIEW</span>
@@ -393,14 +389,14 @@
               <i data-lucide="info" class="w-4 h-4"></i>
               <span class="lang-es">MÁS DETALLES</span><span class="lang-en">MORE DETAILS</span>
             </button>
-            <a href="https://www.minecraft.net/marketplace" target="_blank" class="cartoon-btn w-full py-3.5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+            <button onclick="notificarProximamente()" class="cartoon-btn w-full py-3.5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer">
               <i data-lucide="shopping-cart" class="w-4 h-4"></i>
               <span class="lang-es">COMPRAR EN MARKETPLACE</span><span class="lang-en">BUY ON MARKETPLACE</span>
-            </a>
+            </button>
           </div>
         </div>
 
-        <!-- TARJETA 3: ATUENDOS EXPRESIVOS (SKINPACK) -->
+        <!-- TARJETA 3: ATUENDOS EXPRESIVOS (SKINPACK - DISPONIBLE) -->
         <div class="glass-pill-warm rounded-3xl overflow-hidden flex flex-col justify-between group transition-all duration-300">
           <div>
             <div class="relative overflow-hidden cursor-pointer h-56 sm:h-64 bg-[#fef3c7] dark:bg-slate-800 flex items-center justify-center p-0 group/img" onclick="openProductModal('cyber-skins')">
@@ -563,34 +559,27 @@
       <div class="grid lg:grid-cols-12 gap-6 sm:gap-8 items-start reveal">
         <div class="lg:col-span-5 space-y-4 sm:space-y-6">
           
-          <!-- 🌟 TARJETA DISCORD REESTRUCTURADA CON 'fotodiscord.png' 🌟 -->
-          <div class="discord-card-dynamic rounded-3xl p-5 sm:p-7 text-white relative overflow-hidden group">
-            <!-- Marca de agua de fondo -->
-            <div class="absolute -right-6 -bottom-6 w-44 sm:w-52 opacity-15 pointer-events-none group-hover:scale-105 group-hover:opacity-25 transition-all duration-500">
-              <img src="fotodiscord.png" alt="Discord Watermark" class="w-full h-auto object-contain" onerror="this.onerror=null; this.style.display='none';">
+          <!-- 🌟 TARJETA DISCORD REESTRUCTURADA, MÁS GRANDE Y LLAMATIVA 🌟 -->
+          <div class="discord-card-dynamic rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden group text-center flex flex-col items-center">
+            
+            <!-- Badge oficial superior -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black uppercase tracking-wider mb-4 border border-white/20 shadow-md">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+              <span class="lang-es">Comunidad Oficial</span><span class="lang-en">Official Community</span>
             </div>
 
-            <!-- Personaje principal y encabezado -->
-            <div class="relative z-10 flex flex-col sm:flex-row items-center gap-4 mb-4">
-              <div class="relative shrink-0 flex items-center justify-center">
-                <div class="absolute inset-0 bg-[#ffd928]/35 rounded-full blur-xl animate-pulse"></div>
-                <img src="fotodiscord.png" alt="Personaje Discord" class="w-24 sm:w-28 h-auto object-contain relative z-10 drop-shadow-[0_8px_20px_rgba(0,0,0,0.6)] transform group-hover:scale-105 group-hover:-rotate-2 transition-transform duration-300" onerror="this.onerror=null; this.src='DC.png';">
-              </div>
-              
-              <div class="text-center sm:text-left flex-1">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-black uppercase tracking-wider mb-2">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                  <span class="lang-es">Comunidad Oficial</span><span class="lang-en">Official Community</span>
-                </div>
-                <h3 class="font-heavitas text-base sm:text-xl text-white tracking-wide leading-tight lang-es">Únete a nuestro Discord</h3>
-                <h3 class="font-heavitas text-base sm:text-xl text-white tracking-wide leading-tight lang-en">Join our Discord</h3>
-              </div>
+            <!-- FOTO DISCORD GRANDE Y LLAMATIVA -->
+            <div class="relative w-full flex justify-center items-center my-2">
+              <img src="fotodiscord.png" alt="Discord Character" class="max-h-64 sm:max-h-72 w-auto object-contain relative z-10 drop-shadow-[0_12px_28px_rgba(0,0,0,0.75)] transform group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='DC.png';">
             </div>
 
-            <p class="relative z-10 text-xs text-indigo-100 font-medium mb-5 leading-relaxed text-center sm:text-left lang-es">Chatea con el equipo, conoce convocatorias de creadores y accede a avances exclusivos de nuestros proyectos.</p>
-            <p class="relative z-10 text-xs text-indigo-100 font-medium mb-5 leading-relaxed text-center sm:text-left lang-en">Chat with the team, learn about open creator calls, and see exclusive previews of our projects.</p>
+            <h3 class="font-heavitas text-lg sm:text-2xl text-white tracking-wide leading-tight mb-2 mt-2 lang-es">Únete a nuestro Discord</h3>
+            <h3 class="font-heavitas text-lg sm:text-2xl text-white tracking-wide leading-tight mb-2 mt-2 lang-en">Join our Discord</h3>
 
-            <a href="https://discord.gg/br2efxgmud" target="_blank" class="relative z-10 cartoon-btn w-full py-3 sm:py-3.5 rounded-xl text-[10px] sm:text-[11px] uppercase tracking-wider flex items-center justify-center gap-2 bg-white text-black font-heavitas">
+            <p class="relative z-10 text-xs sm:text-sm text-indigo-100 font-medium mb-6 leading-relaxed max-w-sm lang-es">Chatea con el equipo, conoce convocatorias de creadores y accede a avances exclusivos de nuestros proyectos.</p>
+            <p class="relative z-10 text-xs sm:text-sm text-indigo-100 font-medium mb-6 leading-relaxed max-w-sm lang-en">Chat with the team, learn about open creator calls, and see exclusive previews of our projects.</p>
+
+            <a href="https://discord.gg/br2efxgmud" target="_blank" class="relative z-10 cartoon-btn w-full py-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 bg-white text-black font-heavitas shadow-lg">
               <span class="lang-es">ENTRAR A LA COMUNIDAD</span><span class="lang-en">ENTER THE COMMUNITY</span>
               <i data-lucide="external-link" class="w-4 h-4"></i>
             </a>
@@ -730,11 +719,11 @@
             </h4>
             <ul id="modalProductFeatures" class="grid grid-cols-1 gap-1.5 text-xs font-bold text-stone-800 dark:text-stone-300"></ul>
           </div>
-          <div class="pt-2 sm:pt-4">
-            <a id="modalProductBuyBtn" href="https://www.minecraft.net/marketplace" target="_blank" class="cartoon-btn w-full py-3.5 sm:py-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+          <div class="pt-2 sm:pt-4" id="modalProductBuyContainer">
+            <button id="modalProductBuyBtn" onclick="handleModalBuy(this)" class="cartoon-btn w-full py-3.5 sm:py-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2">
               <i data-lucide="shopping-cart" class="w-4 h-4"></i>
               <span class="lang-es">COMPRAR AHORA EN MARKETPLACE</span><span class="lang-en">BUY NOW ON MARKETPLACE</span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -844,7 +833,8 @@
         formEdad: "Ej: 19 años / Mayor de edad", formPortafolio: "https://artstation.com/tu_perfil",
         formAsunto: "Escribe aquí el asunto de tu mensaje...", formMensaje: "Escribe detalladamente tu propuesta o mensaje...",
         btnText: "ENVIAR SOLICITUD A K PROJECT STUDIOS", btnSending: "ENVIANDO SOLICITUD...",
-        alertOk: "¡Gracias! Tu solicitud ha sido enviada con éxito a K Project Studios.", alertErr: "Hubo un inconveniente al enviar la solicitud. Por favor intenta nuevamente.", alertNet: "Error de red al conectar con el servidor."
+        alertOk: "¡Gracias! Tu solicitud ha sido enviada con éxito a K Project Studios.", alertErr: "Hubo un inconveniente al enviar la solicitud. Por favor intenta nuevamente.", alertNet: "Error de red al conectar con el servidor.",
+        comingSoon: "¡Próximamente disponible en el Minecraft Marketplace!"
       },
       en: {
         formNombreDiscord: "Ex: discord_user", formNombreReal: "Ex: John Doe",
@@ -852,7 +842,8 @@
         formEdad: "Ex: 19 years old / Legal age", formPortafolio: "https://artstation.com/your_profile",
         formAsunto: "Write the subject of your message here...", formMensaje: "Write your proposal or message in detail here...",
         btnText: "SEND APPLICATION TO K PROJECT STUDIOS", btnSending: "SENDING APPLICATION...",
-        alertOk: "Thank you! Your application has been successfully sent to K Project Studios.", alertErr: "There was a problem sending the application. Please try again.", alertNet: "Network error when connecting to the server."
+        alertOk: "Thank you! Your application has been successfully sent to K Project Studios.", alertErr: "There was a problem sending the application. Please try again.", alertNet: "Network error when connecting to the server.",
+        comingSoon: "Coming soon on the Minecraft Marketplace!"
       }
     };
 
@@ -874,6 +865,12 @@
       currentLang = currentLang === 'es' ? 'en' : 'es';
       setLanguage(currentLang);
     });
+
+    // ALERTA DE PRÓXIMAMENTE
+    function notificarProximamente() {
+      const lang = document.documentElement.getAttribute('lang') || 'es';
+      alert(placeholders[lang].comingSoon);
+    }
 
     // ================= MODALES =================
     function openModal(id) { 
@@ -905,7 +902,7 @@
       'bee-kingdom': {
         tag: { es: '⭐ DESTACADO / ADD-ON', en: '⭐ FEATURED / ADD-ON' }, 
         title: { es: 'Bee Kingdom Addon v2.0', en: 'Bee Kingdom Addon v2.0' }, 
-        img: 'product-render.png',
+        img: 'addon1.png',
         desc: { 
           es: 'El complemento definitivo que transforma por completo el comportamiento de las abejas y la miel en Minecraft Bedrock. Añade nuevas colmenas gigantes, abejas reina con IA avanzada, ítems de recolección y armas temáticas de miel.', 
           en: 'The ultimate add-on that completely transforms bee and honey behavior in Minecraft Bedrock. Adds new giant hives, queen bees with advanced AI, harvest items, and honey-themed weapons.' 
@@ -914,12 +911,12 @@
           es: ['Más de 10 nuevos tipos de abejas customizadas', 'Modelos 3D creados en Blockbench HD', 'Nuevas mecánicas de cultivo y apicultura avanzada', 'Interfaz UI personalizada estilo Miel', 'Compatible con Multijugador y Realms'],
           en: ['Over 10 new custom bee types', '3D models created in Blockbench HD', 'New advanced farming and beekeeping mechanics', 'Custom Honey-style UI interface', 'Fully compatible with Multiplayer and Realms']
         },
-        buyUrl: 'https://www.minecraft.net/marketplace'
+        buyUrl: 'comingSoon'
       },
       'dragons-realm': {
         tag: { es: 'GENERAL / AVENTURA RPG', en: 'GENERAL / RPG ADVENTURE' }, 
         title: { es: 'Dragons Realm Adventure', en: 'Dragons Realm Adventure' }, 
-        img: 'ofrecemos1.png',
+        img: 'adventure.png',
         desc: { 
           es: 'Explora un vasto reino medieval habitado por temibles dragones. Completa misiones secundarias, rescata aldeanos, equipa armaduras legendarias y derrota al Dragón Antiguo en una batalla épica sin precedentes.', 
           en: 'Explore a vast medieval realm inhabited by fearsome dragons. Complete side quests, rescue villagers, equip legendary armors, and defeat the Ancient Dragon in an unprecedented epic battle.' 
@@ -928,7 +925,7 @@
           es: ['Mapa de aventuras con historia de +5 horas', 'Jefes de mundo con barras de vida personalizadas', 'Sistema de monturas de dragones voladores', 'Música de ambiente y doblaje de voz original', 'Pueblos interactivos con comerciantes'],
           en: ['Adventure map with +5 hours of story', 'World bosses with custom health bars', 'Flying dragon mount system', 'Ambient music and original voice acting', 'Interactive towns with merchants']
         },
-        buyUrl: 'https://www.minecraft.net/marketplace'
+        buyUrl: 'comingSoon'
       },
       'cyber-skins': {
         tag: { es: 'SKIN PACK / EXPRESIVO', en: 'SKIN PACK / EXPRESSIVE' }, 
@@ -952,6 +949,7 @@
       }
     };
 
+    let activeModalBuyUrl = '';
     function openProductModal(productId) {
       const data = productsData[productId];
       if (!data) return;
@@ -961,7 +959,7 @@
       document.getElementById('modalProductTag').innerText = data.tag[lang];
       document.getElementById('modalProductImg').src = data.img;
       document.getElementById('modalProductDesc').innerText = data.desc[lang];
-      document.getElementById('modalProductBuyBtn').href = data.buyUrl;
+      activeModalBuyUrl = data.buyUrl;
 
       const fCont = document.getElementById('modalProductFeatures'); 
       fCont.innerHTML = '';
@@ -973,6 +971,14 @@
       });
       lucide.createIcons(); 
       openModal('modalProductDetail');
+    }
+
+    function handleModalBuy() {
+      if (activeModalBuyUrl === 'comingSoon') {
+        notificarProximamente();
+      } else if (activeModalBuyUrl) {
+        window.open(activeModalBuyUrl, '_blank');
+      }
     }
 
     // ================= WORKER FORMULARIO CON PROTECCIÓN ANTI-BOTS =================
