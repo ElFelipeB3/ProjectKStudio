@@ -50,6 +50,14 @@
       --mouse-y: 50%;
     }
 
+    /* CURSOR PERSONALIZADO */
+    body, html, *, a, button, input, textarea, select, label, span, div {
+      cursor: url('cursor.png') 0 0, auto !important;
+    }
+    a:hover, button:hover, [onclick] {
+      cursor: url('cursor.png') 0 0, pointer !important;
+    }
+
     body {
       font-family: 'Outfit', sans-serif;
       background-color: var(--brand-dark);
